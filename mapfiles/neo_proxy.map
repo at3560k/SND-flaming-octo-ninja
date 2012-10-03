@@ -1,0 +1,3237 @@
+# TODO: docs
+
+MAP
+    NAME neo_proxy
+    STATUS ON
+    SIZE 400 600      			#BEST RESULTS IF THE ASPECT RATIO OF THESE NUMBERS MATCHES THOSE OF THE EXTENTS DIRECTLY BELOW
+    #EXTENT  -125 20 -68 58
+    EXTENT  93549 3464749 694099 4116299 #NM magic
+    UNITS METERS
+    #SHAPEPATH ""
+    #IMAGECOLOR 255 127 255
+    #IMAGETYPE gif
+    IMAGETYPE png
+    TRANSPARENT ON
+    #SYMBOLSET "/geodata/mapfiles/epht_environment/mapmodule_symbols.inc"
+    #FONTSET "/geodata/mapfiles/epht_environment/fonts.inc"
+    FONTSET "/data/jbrown/EPHT_ARK2/app/epht/resources/mapdata/fonts.list"
+    CONFIG PROJ_LIB "/usr/share/proj/"
+    DEBUG 5
+    CONFIG "MS_ERRORFILE" "/home/jbrown/ms_error.txt"
+
+    SYMBOL
+      NAME "diagonal"
+      TYPE vector
+      TRANSPARENT 0
+      POINTS
+	0 1
+	1 0
+      END
+
+END #END MAP OBJECT
+
+
+#*************************************************MAP PROJECTION*************************************************************************
+
+PROJECTION
+#	"proj=longlat"
+#	"ellps=WGS84"
+#	"datum=WGS84"
+ 	"init=epsg:4326"     #WGS84 Decimal Degrees
+
+#	"proj=utm"
+#	"zone=13"
+#	"datum=NAD83"
+#	"ellps=wgs84"
+#	"units=m"
+#	"no_defs"
+#	"north"
+	"init=epsg:26913"		#UTM-Zone 13N
+    "init=epsg:900913"   # 1e100
+END   #END MAP PROJECTION OBJECT
+
+#****************************************************************WEB INTERFACE*****************************************************************
+
+WEB
+  HEADER air_header.html
+  FOOTER air_footer.html
+  #MINSCALE 5000
+  #MAXSCALE 3550000
+  IMAGEPATH "/tmp/"
+  IMAGEURL "/tmp/"
+     METADATA
+	"wms_title"					"Proxied NEO WMS Services"
+    # http://localhost:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&SERVICE=WMS&REQUEST=GETCAPABILITIES
+	"wms_onlineresource"				"http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map"
+	"wms_abstract"					"WMS Server for data related to the EPHT Environmental Rasters"
+	"wms_addresstype"				"Project Contact Information: Jason Brown"
+	"wms_address"					"Earth Data Analysis Center, University of New Mexico"
+	"wms_city"					"Albuquerque"
+	"wms_stateorprovince"				"New Mexico"
+	"wms_postcode"					"87131"
+	"wms_country"					"USA"
+	"wms_contactelectronicmailaddress"		"jbrown@edac.unm.edu"
+	"wms_connectiontimeout"  			"58"
+	"wms_timeformat"				"YYYY-MM-DDTHH"
+	"ows_label"					"EPHT Environment OGS Services"
+	"default_north"					"58:00:00N"
+	"default_south"					"20:00:00N"
+	"default_east"					"68:00:00W"
+	"default_west"					"125:00:00W"
+	"wms_srs"					"EPSG:4326 EPSG:26913 EPSG:900913" #defines output projections
+     "ows_enable_request" "*"
+
+     END #METADATA
+END  #WEB
+   
+#***********************************************************QUERY MAP***********************************************************************
+
+QUERYMAP
+  SIZE 200 200
+  STATUS ON
+  STYLE HILITE
+  COLOR 255 0 0
+END
+
+#***********************************************************REFERENCE MAP******************************************************************
+
+#REFERENCE
+#  SIZE 195 131
+#  IMAGE /var/www/html/reason_devel/images/refmap.png
+#  EXTENT -127 20 -65 55 #[minx][miny][maxx][maxy]
+#  STATUS ON
+#  MAXBOXSIZE 100 #MAXBOXSIZE [integer]
+#  COLOR -1 -1 -1
+#  OUTLINECOLOR 255 0 0
+#END  #REFERENCE
+
+#******************************************************LEGEND*************************************************************************************
+
+# Start of legend
+
+LEGEND
+  STATUS ON
+  KEYSIZE 18 12
+  LABEL
+    TYPE BITMAP
+    SIZE MEDIUM
+    COLOR 0 0 89
+  END
+END
+
+#**************************************************SCALEBAR************************************************************************************
+
+# Start of scalebar
+
+SCALEBAR
+ #IMAGECOLOR 0 0 0
+  POSITION LL
+  LABEL
+  	COLOR 0 0 0
+	SIZE TINY
+	#FONT TINY
+	#TYPE TRUETYPE
+    #OUTLINECOLOR 0 0 0
+  END  #LABEL
+  STYLE 0
+  SIZE 200 0.5
+  COLOR 255 255 255
+  BACKGROUNDCOLOR 255 255 255
+  OUTLINECOLOR 0 0 0
+  UNITS MILES
+  INTERVALS 3
+  #TRANSPARENT TRUE
+  STATUS ON
+END   #SCALEBAR
+
+#***************************************OUTPUTFORMAT*************************************************
+
+OUTPUTFORMAT
+    NAME "png"
+    MIMETYPE "image/png"
+    DRIVER "GD/PNG"
+    EXTENSION "png"
+    IMAGEMODE "RGBA"
+    TRANSPARENT TRUE
+    FORMATOPTION "INTERLACE=OFF"
+    FORMATOPTION "TRANSPARENT=ON"
+END
+
+OUTPUTFORMAT
+    NAME "GEOTIFF"
+    DRIVER "GDAL/GTiff"
+    MIMETYPE "image/tiff"
+    IMAGEMODE "BYTE"
+    EXTENSION "tif"
+END #OUTPUTFORMAT
+
+#OUTPUTFORMAT
+#	NAME "jpeg"
+#	DRIVER "GD/JPEG"
+#	FORMATOPTION "INTERLACE=OFF"
+#	IMAGEMODE "RGB"
+#	EXTENSION "jpg"
+#END
+
+
+# COMMENTED OUT TEMPLATE
+
+#LAYER
+# NAME "TEMPLATE_NAME"
+# TYPE RASTER
+# CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+# CONNECTIONTYPE WMS
+# STATUS ON
+#
+#  METADATA
+#	  "wms_name"		"TEMPLATE_WMS_NAME"
+#	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+#	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+#	  "wms_abstract" 	"TEMPLATE_WMS_TITLE"
+#	  "wms_title" 		"TEMPLATE_WMS_TITLE"
+##	  "wms_time" 		"2000-04-23"
+#	  "wms_time"            "MODISNASA"
+#	  "wms_format"		"image/jpeg"
+#	    
+#	  "wms_connectiontimeout" "60"
+#	  "wms_latlonboundingbox" "-180 -90 180 90"
+#	  "wms_transparent" 	"TRUE"
+#
+#	  #"wcs_resolution" "0:6 0:6"
+#	  #"wcs_bandcount" "1"
+#	  #"wcs_size" "2700 319"
+#  END   #METADATA
+#
+#
+#END
+
+# COMMENTED OUT ORIGINAL
+
+#LAYER
+# NAME "MOD13A2_E_NDVI"
+# TYPE RASTER
+# CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+# CONNECTIONTYPE WMS
+# STATUS ON
+#
+#  METADATA
+#	  "wms_name"		"MOD13A2_E_NDVI"
+#	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+#	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+#	  "wms_abstract" 	"Vegetation Index NDVI 16 day - Terra/MODIS"
+#	  "wms_title" 		"Vegetation Index NDVI 16 day - Terra/MODIS"
+##	  "wms_time" 		"2000-04-23"
+#	  "wms_time"            "MODISNASA"
+#	  "wms_format"		"image/jpeg"
+#	    
+#	  "wms_connectiontimeout" "60"
+#	  "wms_latlonboundingbox" "-180 -90 180 90"
+#	  "wms_transparent" 	"FALSE"
+#
+#	  "wms_timeextent" "2000-02-18,2000-03-06,2000-03-22,2000-04-07,2000-04-23,2000-05-09,2000-05-25,2000-06-10,2000-06-26,2000-07-12,2000-07-28,2000-08-13,2000-08-29,2000-09-14,2000-09-30,2000-10-16,2000-11-01,2000-11-17,2000-12-03,2000-12-19,2001-01-01,2001-01-17,2001-02-02,2001-02-18,2001-03-06,2001-03-22,2001-04-07,2001-04-23,2001-05-09,2001-05-25,2001-06-10,2001-06-26,2001-07-12,2001-07-28,2001-08-13,2001-08-29,2001-09-14,2001-09-30,2001-10-16,2001-11-01,2001-11-17,2001-12-03,2001-12-19,2002-01-01,2002-01-17,2002-02-02,2002-02-18,2002-03-06,2002-03-22,2002-04-07,2002-04-23,2002-05-09,2002-05-25,2002-06-10,2002-06-26,2002-07-12,2002-07-28,2002-08-13,2002-08-29,2002-09-14,2002-09-30,2002-10-16,2002-11-01,2002-11-17,2002-12-03,2002-12-19,2003-01-01,2003-01-17,2003-02-02,2003-02-18,2003-03-06,2003-03-22,2003-04-07,2003-04-23,2003-05-09,2003-05-25,2003-06-10,2003-06-26,2003-07-12,2003-07-28,2003-08-13,2003-08-29,2003-09-14,2003-09-30,2003-10-16,2003-11-01,2003-11-17,2003-12-03,2003-12-19,2004-01-01,2004-01-17,2004-02-02,2004-02-18,2004-03-06,2004-03-22,2004-04-07,2004-04-23,2004-05-09,2004-05-25,2004-06-10,2004-06-26,2004-07-12,2004-07-28,2004-08-13,2004-08-29,2004-09-14,2004-09-30,2004-10-16,2004-11-01,2004-11-17,2004-12-03,2004-12-19,2005-01-01,2005-01-17,2005-02-02,2005-02-18,2005-03-06,2005-03-22,2005-04-07,2005-04-23,2005-05-09,2005-05-25,2005-06-10,2005-06-26,2005-07-12,2005-07-28,2005-08-13,2005-08-29,2005-09-14,2005-09-30,2005-10-16,2005-11-01,2005-11-17,2005-12-03,2005-12-19,2006-01-01,2006-01-17,2006-02-02,2006-02-18,2006-03-06,2006-03-22,2006-04-07,2006-04-23,2006-05-09,2006-05-25,2006-06-10,2006-06-26,2006-07-12,2006-07-28,2006-08-13,2006-08-29,2006-09-14,2006-09-30,2006-10-16,2006-11-01,2006-11-17,2006-12-03,2006-12-19,2007-01-01,2007-01-17,2007-02-02,2007-02-18,2007-03-06,2007-03-22,2007-04-07,2007-04-23,2007-05-09,2007-05-25,2007-06-10,2007-06-26,2007-07-12,2007-07-28,2007-08-13,2007-08-29,2007-09-14,2007-09-30,2007-10-16,2007-11-01,2007-11-17,2007-12-03,2007-12-19,2008-01-01,2008-01-17,2008-02-02,2008-02-18,2008-03-06,2008-03-22,2008-04-07,2008-04-23,2008-05-09,2008-05-25,2008-06-10,2008-06-26,2008-07-12,2008-07-28,2008-08-13,2008-08-29,2008-09-14,2008-09-30,2008-10-16,2008-11-01,2008-11-17,2008-12-03,2008-12-19,2009-01-01,2009-01-17,2009-02-02,2009-02-18,2009-03-06,2009-03-22,2009-04-07,2009-04-23,2009-05-09,2009-05-25,2009-06-10,2009-06-26,2009-07-12,2009-07-28,2009-08-13,2009-08-29,2009-09-14,2009-09-30,2009-10-16,2009-11-01,2009-11-17,2009-12-03,2009-12-19,2010-01-01,2010-01-17,2010-02-02,2010-02-18,2010-03-06,2010-03-22,2010-04-07,2010-04-23,2010-05-09,2010-05-25,2010-06-10,2010-06-26,2010-07-12,2010-07-28,2010-08-13,2010-08-29,2010-09-14,2010-09-30,2010-10-16,2010-11-01,2010-11-17,2010-12-03,2010-12-19,2011-01-01,2011-01-17,2011-02-02"
+#	  #"wms_timeextent" "2000-02-18,2000-03-06/2000-12-19/P16D,2001-01-01/2001-12-19/P16D,2002-01-01/2002-12-19/P16D,2003-01-01/2003-12-19/P16D,2004-01-01/2004-02-18/P16D,2004-03-06/2004-12-19/P16D,2005-01-01/2005-12-19/P16D,2006-01-01/2006-12-19/P16D,2007-01-01/2007-12-19/P16D,2008-01-01/2008-02-18/P16D,2008-03-06/2008-12-19/P16D,2009-01-01/2009-12-19/P16D,2010-01-01/2010-12-19/P16D,2011-01-01/2011-02-02/P16D"
+#	  "wms_timeitem" "TIME"
+##	  "wms_timedefault" "2011-02-02"
+#	  "wms_timeformat" "YYYY-MM-DD"
+#
+#	  #"wcs_resolution" "0:6 0:6"
+#	  #"wcs_bandcount" "1"
+#	  #"wcs_size" "2700 319"
+#  END   #METADATA
+#
+#END  #LAYER
+
+LAYER
+ NAME "MOD14A1_M_FIRE"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD14A1_M_FIRE"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Active Fires (1 month - Terra/MODIS)"
+	  "wms_title" 		"Active Fires (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD14A1_E_FIRE"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD14A1_E_FIRE"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Active Fires (8 day - Terra/MODIS)"
+	  "wms_title" 		"Active Fires (8 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD14A1_D_FIRE"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD14A1_D_FIRE"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Active Fires (1 day - Terra/MODIS)"
+	  "wms_title" 		"Active Fires (1 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_M_AER_OD"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_M_AER_OD"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Aerosol Optical Thickness (1 month - Terra/MODIS)"
+	  "wms_title" 		"Aerosol Optical Thickness (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_M_AER_OD"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_M_AER_OD"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Aerosol Optical Thickness (1 month - Aqua/MODIS)"
+	  "wms_title" 		"Aerosol Optical Thickness (1 month - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_E_AER_OD"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_E_AER_OD"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Aerosol Optical Thickness (8 day - Terra/MODIS)"
+	  "wms_title" 		"Aerosol Optical Thickness (8 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_E_AER_OD"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_E_AER_OD"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Aerosol Optical Thickness (8 day - Aqua/MODIS)"
+	  "wms_title" 		"Aerosol Optical Thickness (8 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_D_AER_OD"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_D_AER_OD"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Aerosol Optical Thickness (1 day - Terra/MODIS)"
+	  "wms_title" 		"Aerosol Optical Thickness (1 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_D_AER_OD"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_D_AER_OD"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Aerosol Optical Thickness (1 day - Aqua/MODIS)"
+	  "wms_title" 		"Aerosol Optical Thickness (1 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_M_AER_RA"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_M_AER_RA"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Aerosol Particle Radius (1 month - Terra/MODIS)"
+	  "wms_title" 		"Aerosol Particle Radius (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_M_AER_RA"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_M_AER_RA"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Aerosol Particle Radius (1 month - Aqua/MODIS)"
+	  "wms_title" 		"Aerosol Particle Radius (1 month - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_E_AER_RA"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_E_AER_RA"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Aerosol Particle Radius (8 day - Terra/MODIS)"
+	  "wms_title" 		"Aerosol Particle Radius (8 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_E_AER_RA"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_E_AER_RA"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Aerosol Particle Radius (8 day - Aqua/MODIS)"
+	  "wms_title" 		"Aerosol Particle Radius (8 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_D_AER_RA"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_D_AER_RA"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Aerosol Particle Radius (1 day - Terra/MODIS)"
+	  "wms_title" 		"Aerosol Particle Radius (1 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_D_AER_RA"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_D_AER_RA"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Aerosol Particle Radius (1 day - Aqua/MODIS)"
+	  "wms_title" 		"Aerosol Particle Radius (1 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MCD43C3_M_BSA"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MCD43C3_M_BSA"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Albedo (1 month)"
+	  "wms_title" 		"Albedo (1 month)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MCD43C3_E_BSA"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MCD43C3_E_BSA"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Albedo (16 day)"
+	  "wms_title" 		"Albedo (16 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD_LSTD_CLIM_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD_LSTD_CLIM_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Average Land Surface Temperature [Day] (1 month)"
+	  "wms_title" 		"Average Land Surface Temperature [Day] (1 month)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD_LSTD_CLIM_E"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD_LSTD_CLIM_E"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Average Land Surface Temperature [Day] (8 day)"
+	  "wms_title" 		"Average Land Surface Temperature [Day] (8 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD_LSTN_CLIM_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD_LSTN_CLIM_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Average Land Surface Temperature [Night] (1 month)"
+	  "wms_title" 		"Average Land Surface Temperature [Night] (1 month)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD_LSTN_CLIM_E"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD_LSTN_CLIM_E"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Average Land Surface Temperature [Night] (8 day)"
+	  "wms_title" 		"Average Land Surface Temperature [Night] (8 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "AVHRR_CLIM_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"AVHRR_CLIM_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Average Sea Surface Temperature 1985-1997 (1 month - AVHRR)"
+	  "wms_title" 		"Average Sea Surface Temperature 1985-1997 (1 month - AVHRR)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "AVHRR_CLIM_W"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"AVHRR_CLIM_W"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Average Sea Surface Temperature 1985-1997 (8 day - AVHRR)"
+	  "wms_title" 		"Average Sea Surface Temperature 1985-1997 (8 day - AVHRR)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "BlueMarbleNG"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"BlueMarbleNG"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Blue Marble: Next Generation (Terra/MODIS)"
+	  "wms_title" 		"Blue Marble: Next Generation (Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "BlueMarbleNG-TB"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"BlueMarbleNG-TB"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Blue Marble: Next Generation +Topo+Bathy (Terra/MODIS)"
+	  "wms_title" 		"Blue Marble: Next Generation +Topo+Bathy (Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOP_CO_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOP_CO_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Carbon Monoxide (1 month - Terra/MOPITT)"
+	  "wms_title" 		"Carbon Monoxide (1 month - Terra/MOPITT)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MY1DMM_CHLORA"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MY1DMM_CHLORA"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Chlorophyll Concentration (1 month - Aqua/MODIS)"
+	  "wms_title" 		"Chlorophyll Concentration (1 month - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MY1DMW_CHLORA"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MY1DMW_CHLORA"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Chlorophyll Concentration (8 day - Aqua/MODIS)"
+	  "wms_title" 		"Chlorophyll Concentration (8 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MY1DMD_CHLORA"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MY1DMD_CHLORA"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Chlorophyll Concentration (1 day - Aqua/MODIS)"
+	  "wms_title" 		"Chlorophyll Concentration (1 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_M_CLD_CI"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_M_CLD_CI"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cirrus Reflectance (1 month - Terra/MODIS)"
+	  "wms_title" 		"Cirrus Reflectance (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_M_CLD_CI"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_M_CLD_CI"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cirrus Reflectance (1 month - Aqua/MODIS)"
+	  "wms_title" 		"Cirrus Reflectance (1 month - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_E_CLD_CI"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_E_CLD_CI"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cirrus Reflectance (8 day - Terra/MODIS)"
+	  "wms_title" 		"Cirrus Reflectance (8 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_E_CLD_CI"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_E_CLD_CI"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cirrus Reflectance (8 day - Aqua/MODIS)"
+	  "wms_title" 		"Cirrus Reflectance (8 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_D_CLD_CI"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_D_CLD_CI"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cirrus Reflectance (1 day - Terra/MODIS)"
+	  "wms_title" 		"Cirrus Reflectance (1 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_D_CLD_CI"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_D_CLD_CI"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cirrus Reflectance (1 day - Aqua/MODIS)"
+	  "wms_title" 		"Cirrus Reflectance (1 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_M_CLD_FR"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_M_CLD_FR"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Fraction (1 month - Terra/MODIS)"
+	  "wms_title" 		"Cloud Fraction (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_M_CLD_FR"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_M_CLD_FR"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Fraction (1 month - Aqua/MODIS)"
+	  "wms_title" 		"Cloud Fraction (1 month - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_E_CLD_FR"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_E_CLD_FR"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Fraction (8 day - Terra/MODIS)"
+	  "wms_title" 		"Cloud Fraction (8 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_E_CLD_FR"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_E_CLD_FR"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Fraction (8 day - Aqua/MODIS)"
+	  "wms_title" 		"Cloud Fraction (8 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_D_CLD_FR"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_D_CLD_FR"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Fraction (1 day - Terra/MODIS)"
+	  "wms_title" 		"Cloud Fraction (1 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_D_CLD_FR"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_D_CLD_FR"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Fraction (1 day - Aqua/MODIS)"
+	  "wms_title" 		"Cloud Fraction (1 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_M_CLD_OT"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_M_CLD_OT"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Optical Thickness (1 month - Terra/MODIS)"
+	  "wms_title" 		"Cloud Optical Thickness (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_M_CLD_OT"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_M_CLD_OT"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Optical Thickness (1 month - Aqua/MODIS)"
+	  "wms_title" 		"Cloud Optical Thickness (1 month - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_E_CLD_OT"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_E_CLD_OT"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Optical Thickness (8 day - Terra/MODIS)"
+	  "wms_title" 		"Cloud Optical Thickness (8 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_E_CLD_OT"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_E_CLD_OT"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Optical Thickness (8 day - Aqua/MODIS)"
+	  "wms_title" 		"Cloud Optical Thickness (8 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_D_CLD_OT"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_D_CLD_OT"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Optical Thickness (1 day - Terra/MODIS)"
+	  "wms_title" 		"Cloud Optical Thickness (1 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_D_CLD_OT"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_D_CLD_OT"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Optical Thickness (1 day - Aqua/MODIS)"
+	  "wms_title" 		"Cloud Optical Thickness (1 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_M_CLD_RD"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_M_CLD_RD"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Particle Radius (1 month - Terra/MODIS)"
+	  "wms_title" 		"Cloud Particle Radius (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_M_CLD_RD"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_M_CLD_RD"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Particle Radius (1 month - Aqua/MODIS)"
+	  "wms_title" 		"Cloud Particle Radius (1 month - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_E_CLD_RD"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_E_CLD_RD"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Particle Radius (8 day - Terra/MODIS)"
+	  "wms_title" 		"Cloud Particle Radius (8 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_E_CLD_RD"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_E_CLD_RD"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Particle Radius (8 day - Aqua/MODIS)"
+	  "wms_title" 		"Cloud Particle Radius (8 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_D_CLD_RD"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_D_CLD_RD"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Particle Radius (1 day - Terra/MODIS)"
+	  "wms_title" 		"Cloud Particle Radius (1 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_D_CLD_RD"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_D_CLD_RD"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Particle Radius (1 day - Aqua/MODIS)"
+	  "wms_title" 		"Cloud Particle Radius (1 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_M_CLD_WP"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_M_CLD_WP"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Water Content (1 month - Terra/MODIS)"
+	  "wms_title" 		"Cloud Water Content (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_M_CLD_WP"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_M_CLD_WP"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Water Content (1 month - Aqua/MODIS)"
+	  "wms_title" 		"Cloud Water Content (1 month - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_E_CLD_WP"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_E_CLD_WP"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Water Content (8 day - Terra/MODIS)"
+	  "wms_title" 		"Cloud Water Content (8 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_E_CLD_WP"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_E_CLD_WP"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Water Content (8 day - Aqua/MODIS)"
+	  "wms_title" 		"Cloud Water Content (8 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_D_CLD_WP"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_D_CLD_WP"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Water Content (1 day - Terra/MODIS)"
+	  "wms_title" 		"Cloud Water Content (1 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_D_CLD_WP"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_D_CLD_WP"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Cloud Water Content (1 day - Aqua/MODIS)"
+	  "wms_title" 		"Cloud Water Content (1 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD_721D_RR"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD_721D_RR"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"False Color (1 day - Terra/MODIS Rapid Response)"
+	  "wms_title" 		"False Color (1 day - Terra/MODIS Rapid Response)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYD_721D_RR"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYD_721D_RR"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"False Color (1 day - Aqua/MODIS Rapid Response)"
+	  "wms_title" 		"False Color (1 day - Aqua/MODIS Rapid Response)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "GEBCO_BATHY"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"GEBCO_BATHY"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Global Bathymetry (GEBCO)"
+	  "wms_title" 		"Global Bathymetry (GEBCO)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "GISS_TA_Y"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"GISS_TA_Y"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Global Temperature Anomaly (1 year)"
+	  "wms_title" 		"Global Temperature Anomaly (1 year)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "GISS_TA_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"GISS_TA_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Global Temperature Anomaly (1 month)"
+	  "wms_title" 		"Global Temperature Anomaly (1 month)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "SRTM_RAMP2_TOPO"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"SRTM_RAMP2_TOPO"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Global Topography (SRTM/RAMP2)"
+	  "wms_title" 		"Global Topography (SRTM/RAMP2)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "ICESAT_ELEV_G"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"ICESAT_ELEV_G"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Greenland / Antarctica Elevation (ICESat/GLAS) [Global]"
+	  "wms_title" 		"Greenland / Antarctica Elevation (ICESat/GLAS) [Global]"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD12Q1_T1"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD12Q1_T1"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Land Cover Classification (1 year - Terra/MODIS)"
+	  "wms_title" 		"Land Cover Classification (1 year - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD_LSTAD_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD_LSTAD_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Land Surface Temperature Anomaly [Day] (1 month)"
+	  "wms_title" 		"Land Surface Temperature Anomaly [Day] (1 month)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD_LSTAD_E"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD_LSTAD_E"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Land Surface Temperature Anomaly [Day] (8 day)"
+	  "wms_title" 		"Land Surface Temperature Anomaly [Day] (8 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD_LSTAD_D"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD_LSTAD_D"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Land Surface Temperature Anomaly [Day] (1 day)"
+	  "wms_title" 		"Land Surface Temperature Anomaly [Day] (1 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD_LSTAN_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD_LSTAN_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Land Surface Temperature Anomaly [Night] (1 month)"
+	  "wms_title" 		"Land Surface Temperature Anomaly [Night] (1 month)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD_LSTAN_E"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD_LSTAN_E"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Land Surface Temperature Anomaly [Night] (8 day)"
+	  "wms_title" 		"Land Surface Temperature Anomaly [Night] (8 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD_LSTAN_D"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD_LSTAN_D"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Land Surface Temperature Anomaly [Night] (1 day)"
+	  "wms_title" 		"Land Surface Temperature Anomaly [Night] (1 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD11C1_M_LSTDA"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD11C1_M_LSTDA"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Land Surface Temperature [Day] (1 month - Terra/MODIS)"
+	  "wms_title" 		"Land Surface Temperature [Day] (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD11C1_E_LSTDA"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD11C1_E_LSTDA"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Land Surface Temperature [Day] (8 day - Terra/MODIS)"
+	  "wms_title" 		"Land Surface Temperature [Day] (8 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD11C1_D_LSTDA"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD11C1_D_LSTDA"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Land Surface Temperature [Day] (1 day - Terra/MODIS)"
+	  "wms_title" 		"Land Surface Temperature [Day] (1 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD11C1_M_LSTNI"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD11C1_M_LSTNI"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Land Surface Temperature [Night] (1 month - Terra/MODIS)"
+	  "wms_title" 		"Land Surface Temperature [Night] (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD11C1_E_LSTNI"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD11C1_E_LSTNI"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Land Surface Temperature [Night] (8 day - Terra/MODIS)"
+	  "wms_title" 		"Land Surface Temperature [Night] (8 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD11C1_D_LSTNI"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD11C1_D_LSTNI"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Land Surface Temperature [Night] (1 day - Terra/MODIS)"
+	  "wms_title" 		"Land Surface Temperature [Night] (1 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD15A2_M_LAI"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD15A2_M_LAI"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Leaf Area Index (1 month - Terra/MODIS)"
+	  "wms_title" 		"Leaf Area Index (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD15A2_E_LAI"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD15A2_E_LAI"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Leaf Area Index (8 day - Terra/MODIS)"
+	  "wms_title" 		"Leaf Area Index (8 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD17A2_M_PSN"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD17A2_M_PSN"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Net Primary Productivity (1 month - Terra/MODIS)"
+	  "wms_title" 		"Net Primary Productivity (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD17A2_E_PSN"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD17A2_E_PSN"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Net Primary Productivity (8 day - Terra/MODIS)"
+	  "wms_title" 		"Net Primary Productivity (8 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "CERES_NETFLUX_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"CERES_NETFLUX_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Net Radiation (1 month)"
+	  "wms_title" 		"Net Radiation (1 month)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "CERES_NETFLUX_E"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"CERES_NETFLUX_E"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Net Radiation (8 day)"
+	  "wms_title" 		"Net Radiation (8 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "CERES_NETFLUX_D"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"CERES_NETFLUX_D"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Net Radiation (1 day)"
+	  "wms_title" 		"Net Radiation (1 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "CERES_LWFLUX_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"CERES_LWFLUX_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Outgoing Longwave Radiation (1 month)"
+	  "wms_title" 		"Outgoing Longwave Radiation (1 month)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "CERES_LWFLUX_E"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"CERES_LWFLUX_E"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Outgoing Longwave Radiation (8 day)"
+	  "wms_title" 		"Outgoing Longwave Radiation (8 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "CERES_LWFLUX_D"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"CERES_LWFLUX_D"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Outgoing Longwave Radiation (1 day)"
+	  "wms_title" 		"Outgoing Longwave Radiation (1 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "PermafrostNSIDC"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"PermafrostNSIDC"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Permafrost"
+	  "wms_title" 		"Permafrost"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "SEDAC_POP"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"SEDAC_POP"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Population Density"
+	  "wms_title" 		"Population Density"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "CERES_SWFLUX_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"CERES_SWFLUX_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Reflected Shortwave Radiation (1 month)"
+	  "wms_title" 		"Reflected Shortwave Radiation (1 month)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "CERES_SWFLUX_E"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"CERES_SWFLUX_E"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Reflected Shortwave Radiation (8 day)"
+	  "wms_title" 		"Reflected Shortwave Radiation (8 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "CERES_SWFLUX_D"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"CERES_SWFLUX_D"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Reflected Shortwave Radiation (1 day)"
+	  "wms_title" 		"Reflected Shortwave Radiation (1 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "AVHRR_SST_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"AVHRR_SST_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Sea Surface Temperature 1981-2006 (1 month - AVHRR)"
+	  "wms_title" 		"Sea Surface Temperature 1981-2006 (1 month - AVHRR)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "AVHRR_SST_E"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"AVHRR_SST_E"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Sea Surface Temperature 1981-2006 (8 day - AVHRR)"
+	  "wms_title" 		"Sea Surface Temperature 1981-2006 (8 day - AVHRR)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYD28M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYD28M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Sea Surface Temperature (1 month - Aqua/MODIS)"
+	  "wms_title" 		"Sea Surface Temperature (1 month - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYD28W"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYD28W"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Sea Surface Temperature (8 day - Aqua/MODIS)"
+	  "wms_title" 		"Sea Surface Temperature (8 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYD28D"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYD28D"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Sea Surface Temperature (1 day - Aqua/MODIS)"
+	  "wms_title" 		"Sea Surface Temperature (1 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "AMSRE_SST_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"AMSRE_SST_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Sea Surface Temperature 2002-2011 (1 month - Aqua/AMSR-E)"
+	  "wms_title" 		"Sea Surface Temperature 2002-2011 (1 month - Aqua/AMSR-E)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "AMSRE_SST_W"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"AMSRE_SST_W"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Sea Surface Temperature 2002-2011 (8 day - Aqua/AMSR-E)"
+	  "wms_title" 		"Sea Surface Temperature 2002-2011 (8 day - Aqua/AMSR-E)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "AMSRE_SST_D"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"AMSRE_SST_D"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Sea Surface Temperature 2002-2011 (1 day - Aqua/AMSR-E)"
+	  "wms_title" 		"Sea Surface Temperature 2002-2011 (1 day - Aqua/AMSR-E)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "AMSRE_SSTAn_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"AMSRE_SSTAn_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Sea Surface Temperature Anomaly 2002-2011 (1 month - Aqua/AMSR-E)"
+	  "wms_title" 		"Sea Surface Temperature Anomaly 2002-2011 (1 month - Aqua/AMSR-E)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "AMSRE_SSTAn_W"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"AMSRE_SSTAn_W"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Sea Surface Temperature Anomaly 2002-2011 (8 day - Aqua/AMSR-E)"
+	  "wms_title" 		"Sea Surface Temperature Anomaly 2002-2011 (8 day - Aqua/AMSR-E)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "AMSRE_SSTAn_D"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"AMSRE_SSTAn_D"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Sea Surface Temperature Anomaly 2002-2011 (1 day - Aqua/AMSR-E)"
+	  "wms_title" 		"Sea Surface Temperature Anomaly 2002-2011 (1 day - Aqua/AMSR-E)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD10C1_M_SNOW"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD10C1_M_SNOW"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Snow Cover (1 month - Terra/MODIS)"
+	  "wms_title" 		"Snow Cover (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD10C1_E_SNOW"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD10C1_E_SNOW"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Snow Cover (8 day - Terra/MODIS)"
+	  "wms_title" 		"Snow Cover (8 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD10C1_D_SNOW"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD10C1_D_SNOW"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Snow Cover (1 day - Terra/MODIS)"
+	  "wms_title" 		"Snow Cover (1 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "SCSIE_W"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"SCSIE_W"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Northern Hemisphere Snow Cover and Sea Ice Extent (1 week)"
+	  "wms_title" 		"Northern Hemisphere Snow Cover and Sea Ice Extent (1 week)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "NISE_D"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"NISE_D"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Global Ice Concentration and Snow Extent (1 day - SSM/I / DMSP)"
+	  "wms_title" 		"Global Ice Concentration and Snow Extent (1 day - SSM/I / DMSP)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "SWE_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"SWE_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Snow Water Equivalent (1 month - Passive Microwave, with optical)"
+	  "wms_title" 		"Snow Water Equivalent (1 month - Passive Microwave, with optical)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "CERES_INSOL_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"CERES_INSOL_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Solar Insolation (1 month)"
+	  "wms_title" 		"Solar Insolation (1 month)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "CERES_INSOL_E"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"CERES_INSOL_E"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Solar Insolation (8 day)"
+	  "wms_title" 		"Solar Insolation (8 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "CERES_INSOL_D"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"CERES_INSOL_D"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Solar Insolation (1 day)"
+	  "wms_title" 		"Solar Insolation (1 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "AURA_OZONE_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"AURA_OZONE_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Total Column Ozone (1 month)"
+	  "wms_title" 		"Total Column Ozone (1 month)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "AURA_OZONE_E"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"AURA_OZONE_E"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Total Column Ozone (8 day)"
+	  "wms_title" 		"Total Column Ozone (8 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "AURA_OZONE_D"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"AURA_OZONE_D"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Total Column Ozone (1 day)"
+	  "wms_title" 		"Total Column Ozone (1 day)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "TRMM_3B43M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"TRMM_3B43M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Total Rainfall (1 month - TRMM)"
+	  "wms_title" 		"Total Rainfall (1 month - TRMM)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "TRMM_3B43D"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"TRMM_3B43D"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Total Rainfall (1 day - TRMM)"
+	  "wms_title" 		"Total Rainfall (1 day - TRMM)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD_143D_RR"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD_143D_RR"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"True Color (1 day - Terra/MODIS Rapid Response)"
+	  "wms_title" 		"True Color (1 day - Terra/MODIS Rapid Response)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYD_143D_RR"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYD_143D_RR"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"True Color (1 day - Aqua/MODIS Rapid Response)"
+	  "wms_title" 		"True Color (1 day - Aqua/MODIS Rapid Response)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD13A2_M_NDVI"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD13A2_M_NDVI"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Vegetation Index [NDVI] (1 month - Terra/MODIS)"
+	  "wms_title" 		"Vegetation Index [NDVI] (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MOD13A2_E_NDVI"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MOD13A2_E_NDVI"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Vegetation Index [NDVI] (16 day - Terra/MODIS)"
+	  "wms_title" 		"Vegetation Index [NDVI] (16 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "GRACE_LWE_M"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"GRACE_LWE_M"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Water Equivalent Anomaly (1 month)"
+	  "wms_title" 		"Water Equivalent Anomaly (1 month)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_M_SKY_WV"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_M_SKY_WV"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Water Vapor (1 month - Terra/MODIS)"
+	  "wms_title" 		"Water Vapor (1 month - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_M_SKY_WV"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_M_SKY_WV"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Water Vapor (1 month - Aqua/MODIS)"
+	  "wms_title" 		"Water Vapor (1 month - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_E_SKY_WV"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_E_SKY_WV"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Water Vapor (8 day - Terra/MODIS)"
+	  "wms_title" 		"Water Vapor (8 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_E_SKY_WV"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_E_SKY_WV"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Water Vapor (8 day - Aqua/MODIS)"
+	  "wms_title" 		"Water Vapor (8 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MODAL2_D_SKY_WV"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MODAL2_D_SKY_WV"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Water Vapor (1 day - Terra/MODIS)"
+	  "wms_title" 		"Water Vapor (1 day - Terra/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+LAYER
+ NAME "MYDAL2_D_SKY_WV"
+ TYPE RASTER
+ CONNECTION "http://neowms.sci.gsfc.nasa.gov/wms/wms?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+  METADATA
+	  "wms_name"		"MYDAL2_D_SKY_WV"
+	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"		#request from here to NASA service must use SRS=EPSG:4326
+	  "wms_abstract" 	"Water Vapor (1 day - Aqua/MODIS)"
+	  "wms_title" 		"Water Vapor (1 day - Aqua/MODIS)"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-180 -90 180 90"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+
+
+
+####################################################################################################################
+
+END  # MAPFILE
+

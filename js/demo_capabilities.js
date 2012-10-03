@@ -51,18 +51,11 @@ Ext.onReady(function() {
             // Scraped http://neowms.sci.gsfc.nasa.gov/wms/wms?request=getCapabilities
             //  in order to avoid hounding the NASA server in demo
             // Lock to 1.1.1 so it will talk to us in 4326
-            //url: '../data/neo_capabilities_1_1_1.xml',
-            //url: '../data/proxyCapabilities.xml',
-            url: '../data/proxy2.xml',
+            url: '../data/neo_capabilities_1_1_1.xml',
             layerOptions: {
                 buffer: 0, 
-                //singleTile: true, 
                 ratio: 1,
-                opacity: 0.8
-                //projection: wgs84
-                //useCanvas: OpenLayers.Layer.Grid.ONECANVASPERTILE,
-                //proj4JSPath: "/vendor/proj4js/lib/proj4js=combined.js",
-                //gdalwarpWebWorkerPath: "/vendor/gdalwarp-webworker.js"
+                opacity: 0.6
             },
             layerParams: {
                 'TRANSPARENT': 'TRUE',
@@ -110,18 +103,16 @@ Ext.onReady(function() {
     mapPanel = new GeoExt.MapPanel({
         // Accepts GeoExt.data.{LayerStore,GroupingStore} or [OpenLayers.Layer]
         layers: [
-          //layers.blueMarble
           layers.OSM
-          //layers.EDAC_BASE
         ] ,
         region: 'center',
         map: {
           // Borks on them
           projection: new OpenLayers.Projection("EPSG:900913"),  // Explicit
           displayProjection: wgs84,
-          units: "m"
-          //maxExtent: bounds,
-          //restrictedExtent: bounds,
+          units: "m",
+          maxExtent: bounds,
+          restrictedExtent: bounds
         }
     });
 
@@ -129,8 +120,6 @@ Ext.onReady(function() {
     mapPanel.map.addControl (new OpenLayers.Control.MousePosition({
       numDigits: 2
     }));
-
-    //mapPanel.map.addControl (new OpenLayers.Control.ZoomToMaxExtent());
 
     new Ext.Viewport({
         layout: "fit",

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="ISO-8859-1" standalone="no" ?>
-<WMS_Capabilities version="1.3.0"  xmlns="http://www.opengis.net/wms"   xmlns:sld="http://www.opengis.net/sld"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xmlns:ms="http://mapserver.gis.umn.edu/mapserver"   xsi:schemaLocation="http://www.opengis.net/wms http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd  http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/sld_capabilities.xsd  http://mapserver.gis.umn.edu/mapserver http://localhost:9001/maps?map=/home/jbrown/neo_proxy.map&amp;service=WMS&amp;version=1.3.0&amp;request=GetSchemaExtension">
+<WMS_Capabilities version="1.3.0"  xmlns="http://www.opengis.net/wms"   xmlns:sld="http://www.opengis.net/sld"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xmlns:ms="http://mapserver.gis.umn.edu/mapserver"   xsi:schemaLocation="http://www.opengis.net/wms http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd  http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/sld_capabilities.xsd  http://mapserver.gis.umn.edu/mapserver http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&amp;service=WMS&amp;version=1.3.0&amp;request=GetSchemaExtension">
 
 <!-- MapServer version 6.0.1 OUTPUT=GIF OUTPUT=PNG OUTPUT=JPEG SUPPORTS=PROJ SUPPORTS=AGG SUPPORTS=CAIRO SUPPORTS=FREETYPE SUPPORTS=ICONV SUPPORTS=FRIBIDI SUPPORTS=WMS_SERVER SUPPORTS=WMS_CLIENT SUPPORTS=WFS_SERVER SUPPORTS=WFS_CLIENT SUPPORTS=WCS_SERVER SUPPORTS=SOS_SERVER SUPPORTS=FASTCGI SUPPORTS=THREADS SUPPORTS=GEOS INPUT=POSTGIS INPUT=OGR INPUT=GDAL INPUT=SHAPEFILE -->
 
@@ -7,17 +7,17 @@
   <Name>WMS</Name>
   <Title>EPHT Environment OGC Services</Title>
   <Abstract>WMS Server for data related to the EPHT Environmental Rasters</Abstract>
-  <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:9001/maps?map=/home/jbrown/neo_proxy.map&amp;"/>
+  <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&amp;"/>
   <ContactInformation>
     <ContactAddress>
-        <AddressType>Project Contact Information: William Hudspeth</AddressType>
+        <AddressType>Project Contact Information: Jason Brown</AddressType>
         <Address>Earth Data Analysis Center, University of New Mexico</Address>
         <City>Albuquerque</City>
         <StateOrProvince>New Mexico</StateOrProvince>
         <PostCode>87131</PostCode>
         <Country>USA</Country>
     </ContactAddress>
-  <ContactElectronicMailAddress>bhudspeth@edac.unm.edu</ContactElectronicMailAddress>
+  <ContactElectronicMailAddress>jbrown@edac.unm.edu</ContactElectronicMailAddress>
   </ContactInformation>
   <MaxWidth>2048</MaxWidth>
   <MaxHeight>2048</MaxHeight>
@@ -29,23 +29,23 @@
       <Format>text/xml</Format>
       <DCPType>
         <HTTP>
-          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:9001/maps?map=/home/jbrown/neo_proxy.map&amp;"/></Get>
-          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:9001/maps?map=/home/jbrown/neo_proxy.map&amp;"/></Post>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&amp;"/></Post>
         </HTTP>
       </DCPType>
     </GetCapabilities>
     <GetMap>
       <Format>image/png</Format>
       <Format>image/tiff</Format>
-      <Format>image/gif</Format>
       <Format>image/jpeg</Format>
+      <Format>image/gif</Format>
       <Format>image/png; mode=8bit</Format>
       <Format>application/x-pdf</Format>
       <Format>image/svg+xml</Format>
       <DCPType>
         <HTTP>
-          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:9001/maps?map=/home/jbrown/neo_proxy.map&amp;"/></Get>
-          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:9001/maps?map=/home/jbrown/neo_proxy.map&amp;"/></Post>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&amp;"/></Post>
         </HTTP>
       </DCPType>
     </GetMap>
@@ -54,8 +54,8 @@
       <Format>application/vnd.ogc.gml</Format>
       <DCPType>
         <HTTP>
-          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:9001/maps?map=/home/jbrown/neo_proxy.map&amp;"/></Get>
-          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:9001/maps?map=/home/jbrown/neo_proxy.map&amp;"/></Post>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&amp;"/></Post>
         </HTTP>
       </DCPType>
     </GetFeatureInfo>
@@ -63,20 +63,20 @@
       <Format>text/xml</Format>
       <DCPType>
         <HTTP>
-          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:9001/maps?map=/home/jbrown/neo_proxy.map&amp;"/></Get>
-          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:9001/maps?map=/home/jbrown/neo_proxy.map&amp;"/></Post>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&amp;"/></Post>
         </HTTP>
       </DCPType>
     </sld:DescribeLayer>
     <sld:GetLegendGraphic>
       <Format>image/png</Format>
-      <Format>image/gif</Format>
       <Format>image/jpeg</Format>
+      <Format>image/gif</Format>
       <Format>image/png; mode=8bit</Format>
       <DCPType>
         <HTTP>
-          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:9001/maps?map=/home/jbrown/neo_proxy.map&amp;"/></Get>
-          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:9001/maps?map=/home/jbrown/neo_proxy.map&amp;"/></Post>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&amp;"/></Post>
         </HTTP>
       </DCPType>
     </sld:GetLegendGraphic>
@@ -84,8 +84,8 @@
       <Format>text/xml</Format>
       <DCPType>
         <HTTP>
-          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:9001/maps?map=/home/jbrown/neo_proxy.map&amp;"/></Get>
-          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:9001/maps?map=/home/jbrown/neo_proxy.map&amp;"/></Post>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&amp;"/></Post>
         </HTTP>
       </DCPType>
     </ms:GetStyles>
@@ -102,6 +102,7 @@
     <Abstract>WMS Server for data related to the EPHT Environmental Rasters</Abstract>
     <CRS>EPSG:4326</CRS>
     <CRS>EPSG:26913</CRS>
+    <CRS>EPSG:900913</CRS>
     <EX_GeographicBoundingBox>
         <westBoundLongitude>93549</westBoundLongitude>
         <eastBoundLongitude>694099</eastBoundLongitude>

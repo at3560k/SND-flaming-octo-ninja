@@ -5,15 +5,6 @@
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
     <title> WMS Capabilities Loader: Demonstration </title>
 
-    <!--
-    <script type="text/javascript" src="http://extjs.cachefly.net/ext-3.4.0/adapter/ext/ext-base.js"></script>
-    <script type="text/javascript" src="http://extjs.cachefly.net/ext-3.4.0/ext-all.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-3.4.0/resources/css/ext-all.css" />
-    <link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-3.4.0/examples/shared/examples.css" />
-    <script type="text/javascript" src="../vendor/ext-4.1.1a/ext-all.js"></script>
-    <script type="text/javascript" charset="utf-8" src="http://cdn.sencha.io/ext-4.1.0-gpl/ext-all.js"></script>
-    -->
-
     <script type="text/javascript" src="../vendor/ext-3.4.0/adapter/ext/ext-base.js"></script>
     <script type="text/javascript" src="../vendor/ext-3.4.0/ext-all-debug.js"></script>
 
@@ -24,11 +15,7 @@
 
     <script type="text/javascript" src="../vendor/GeoExt/script/GeoExt.js"></script>
 
-    <script type="text/javascript" src="../vendor/proj4js/lib/proj4js-combined.js"></script>
-
-    <script type="text/javascript" src="../vendor/gdalwarp.js"></script>
-
-    <script type="text/javascript" src="../js/demo.js"></script>
+    <script type="text/javascript" src="../js/demo_capabilities.js"></script>
     
   </head>
 
@@ -45,6 +32,12 @@
         response. The example also shows how to customize the loader's
         <tt>createNode</tt> method to add a checkbox with a <tt>checkchange</tt>
         listener that adds and removes layers to and from the map. 
+      </p>
+      <p> These images will <em>NOT</em> load because the NEO WMS service only
+      provides CRS:84 and EPSG:4236.  If we wanted them to load, they would
+      have to be the first layer in the core map.  
+      </p>
+      <p> <a href='/demo/WMS_Cascade.html'> Working Modified Version</a>
       </p>
     </div>
   </body>

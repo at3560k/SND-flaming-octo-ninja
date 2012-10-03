@@ -1,0 +1,179 @@
+# TODO: docs
+
+MAP
+    NAME arc_proxy
+    STATUS ON
+    SIZE 400 600      			#BEST RESULTS IF THE ASPECT RATIO OF THESE NUMBERS MATCHES THOSE OF THE EXTENTS DIRECTLY BELOW
+    #EXTENT  -125 20 -68 58
+    EXTENT  93549 3464749 694099 4116299 #NM magic
+    UNITS METERS
+    #SHAPEPATH ""
+    #IMAGECOLOR 255 127 255
+    #IMAGETYPE gif
+    IMAGETYPE png
+    TRANSPARENT ON
+    #SYMBOLSET "/geodata/mapfiles/epht_environment/mapmodule_symbols.inc"
+    #FONTSET "/geodata/mapfiles/epht_environment/fonts.inc"
+    FONTSET "/data/jbrown/EPHT_ARK2/app/epht/resources/mapdata/fonts.list"
+    CONFIG PROJ_LIB "/usr/share/proj/"
+    DEBUG 5
+    CONFIG "MS_ERRORFILE" "/home/jbrown/ms_error.txt"
+
+    SYMBOL
+      NAME "diagonal"
+      TYPE vector
+      TRANSPARENT 0
+      POINTS
+	0 1
+	1 0
+      END
+
+END #END MAP OBJECT
+
+
+#*************************************************MAP PROJECTION*************************************************************************
+
+PROJECTION
+#	"proj=longlat"
+#	"ellps=WGS84"
+#	"datum=WGS84"
+ 	"init=epsg:4326"     #WGS84 Decimal Degrees
+
+#	"proj=utm"
+#	"zone=13"
+#	"datum=NAD83"
+#	"ellps=wgs84"
+#	"units=m"
+#	"no_defs"
+#	"north"
+	"init=epsg:26913"		#UTM-Zone 13N
+    "init=epsg:900913"   # 1e100
+END   #END MAP PROJECTION OBJECT
+
+#****************************************************************WEB INTERFACE*****************************************************************
+
+WEB
+  HEADER air_header.html
+  FOOTER air_footer.html
+  #MINSCALE 5000
+  #MAXSCALE 3550000
+  IMAGEPATH "/tmp/"
+  IMAGEURL "/tmp/"
+     METADATA
+	"wms_title"					"EPHT Environment OGC Services"
+    # http://localhost:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map&SERVICE=WMS&REQUEST=GETCAPABILITIES
+	"wms_onlineresource"				"http://mymapserver.edac.unm.edu:9000/maps?map=/data/jbrown/SND-flaming-octo-ninja/mapfiles/neo_proxy.map"
+	"wms_abstract"					"WMS Server for data related to the EPHT Environmental Rasters"
+	"wms_addresstype"				"Project Contact Information: Jason Brown"
+	"wms_address"					"Earth Data Analysis Center, University of New Mexico"
+	"wms_city"					"Albuquerque"
+	"wms_stateorprovince"				"New Mexico"
+	"wms_postcode"					"87131"
+	"wms_country"					"USA"
+	"wms_contactelectronicmailaddress"		"jbrown@edac.unm.edu"
+	"wms_connectiontimeout"  			"58"
+	"wms_timeformat"				"YYYY-MM-DDTHH"
+	"ows_label"					"EPHT Environment OGS Services"
+	"default_north"					"58:00:00N"
+	"default_south"					"20:00:00N"
+	"default_east"					"68:00:00W"
+	"default_west"					"125:00:00W"
+	"wms_srs"					"EPSG:4326 EPSG:26913 EPSG:900913" #defines output projections
+     "ows_enable_request" "*"
+
+     END #METADATA
+END  #WEB
+   
+#***********************************************************QUERY MAP***********************************************************************
+
+QUERYMAP
+  SIZE 200 200
+  STATUS ON
+  STYLE HILITE
+  COLOR 255 0 0
+END
+
+#******************************************************LEGEND*************************************************************************************
+
+# Start of legend
+
+LEGEND
+  STATUS ON
+  KEYSIZE 18 12
+  LABEL
+    TYPE BITMAP
+    SIZE MEDIUM
+    COLOR 0 0 89
+  END
+END
+
+#**************************************************SCALEBAR************************************************************************************
+
+# Start of scalebar
+
+SCALEBAR
+ #IMAGECOLOR 0 0 0
+  POSITION LL
+  LABEL
+  	COLOR 0 0 0
+	SIZE TINY
+	#FONT TINY
+	#TYPE TRUETYPE
+    #OUTLINECOLOR 0 0 0
+  END  #LABEL
+  STYLE 0
+  SIZE 200 0.5
+  COLOR 255 255 255
+  BACKGROUNDCOLOR 255 255 255
+  OUTLINECOLOR 0 0 0
+  UNITS MILES
+  INTERVALS 3
+  #TRANSPARENT TRUE
+  STATUS ON
+END   #SCALEBAR
+
+#***************************************OUTPUTFORMAT*************************************************
+
+OUTPUTFORMAT
+    NAME "png"
+    MIMETYPE "image/png"
+    DRIVER "GD/PNG"
+    EXTENSION "png"
+    IMAGEMODE "RGBA"
+    TRANSPARENT TRUE
+    FORMATOPTION "INTERLACE=OFF"
+    FORMATOPTION "TRANSPARENT=ON"
+END
+
+LAYER
+ NAME "NM_MapService"
+ TYPE RASTER
+ CONNECTION "http://edacarc10.unm.edu/ArcGIS/services/NM_MapService/MapServer/WMSServer?"
+ CONNECTIONTYPE WMS
+ STATUS ON
+
+ OFFSITE 0 0 0
+
+  METADATA
+      #"wms_name"  "23,22,21,20,19,18,17,16,14,13,12,11,9,8,6,5,4,3,1,0"
+      "wms_name"  "0,1,9,16,24"
+	  "wms_server_version" 	"1.1.1"	 #request from here to NASA service in version 1.1.1
+	  "wms_srs" 		"EPSG:4326"  #use SRS=EPSG:4326
+	  "wms_abstract" 	"NM Map Service"
+	  "wms_title" 		"NM Map Service"
+	  "wms_format"		"image/jpeg"
+
+	  "wms_connectiontimeout" "60"
+	  "wms_latlonboundingbox" "-109.549989 -102.819735 37.118066 31.216571"
+	  "wms_transparent" 	"TRUE"
+  END   #METADATA
+END
+    
+
+
+
+
+####################################################################################################################
+
+END  # MAPFILE
+
