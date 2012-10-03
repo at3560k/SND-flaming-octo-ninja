@@ -11,7 +11,16 @@
  *  ---------------------
  *  Create a tree loader from WMS capabilities documents.
  */
+
+/**
+ *
+ * Also src from http://dev.openlayers.org/sandbox/camptocamp/canvas/openlayers/examples/raster-reprojection.html
+ *
+ */
+
 var tree, mapPanel, legendPanel;
+
+var wgs84 = new OpenLayers.Projection("EPSG:4326");
 
 var layers = {
 
@@ -42,15 +51,27 @@ Ext.onReady(function() {
             // Scraped http://neowms.sci.gsfc.nasa.gov/wms/wms?request=getCapabilities
             //  in order to avoid hounding the NASA server in demo
             // Lock to 1.1.1 so it will talk to us in 4326
-            url: '../data/neo_capabilities_1_3_0.xml',
-            layerOptions: {buffer: 0, singleTile: true, ratio: 1},
+            //url: '../data/neo_capabilities_1_1_1.xml',
+            url: '../data/proxyCapabilities.xml',
+            layerOptions: {
+                buffer: 0, 
+                singleTile: true, 
+                ratio: 1,
+                opacity: 0.8,
+                projection: wgs84,
+                useCanvas: OpenLayers.Layer.Grid.ONECANVASPERTILE,
+                proj4JSPath: "/vendor/proj4js/lib/proj4js=combined.js",
+                gdalwarpWebWorkerPath: "/vendor/gdalwarp-webworker.js"
+            },
             layerParams: {
                 'TRANSPARENT': 'TRUE',
                 'VERSION' : '1.1.1'
             },
+            projection: wgs84,
             // customize the createNode method to add a checkbox to nodes
             createNode: function(attr) {
                 attr.checked = attr.leaf ? false : undefined;
+                attr.canvasAsync = true;
                 return GeoExt.tree.WMSCapabilitiesLoader.prototype.createNode.apply(this, [attr]);
             }
         })
@@ -67,6 +88,7 @@ Ext.onReady(function() {
     });
 
     tree = new Ext.tree.TreePanel({
+        autoScroll: true,
         root: root,
         region: 'west',
         width: 250,
@@ -94,10 +116,11 @@ Ext.onReady(function() {
         region: 'center',
         map: {
           // Borks on them
+          projection: new OpenLayers.Projection("EPSG:900913"),  // Explicit
+          displayProjection: wgs84,
+          units: "m",
           //maxExtent: bounds,
           //restrictedExtent: bounds,
-          displayProjection: new OpenLayers.Projection("EPSG:4326"),
-          projection: new OpenLayers.Projection("EPSG:4326")  // Explicit
         }
     });
 

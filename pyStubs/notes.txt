@@ -1,0 +1,3 @@
+need to fix the gd/png drivers
+ows_enable_request = "*"
+symbology and crashing
