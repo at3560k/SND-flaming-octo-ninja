@@ -52,16 +52,17 @@ Ext.onReady(function() {
             //  in order to avoid hounding the NASA server in demo
             // Lock to 1.1.1 so it will talk to us in 4326
             //url: '../data/neo_capabilities_1_1_1.xml',
-            url: '../data/proxyCapabilities.xml',
+            //url: '../data/proxyCapabilities.xml',
+            url: '../data/proxy2.xml',
             layerOptions: {
                 buffer: 0, 
-                singleTile: true, 
+                //singleTile: true, 
                 ratio: 1,
-                opacity: 0.8,
-                projection: wgs84,
-                useCanvas: OpenLayers.Layer.Grid.ONECANVASPERTILE,
-                proj4JSPath: "/vendor/proj4js/lib/proj4js=combined.js",
-                gdalwarpWebWorkerPath: "/vendor/gdalwarp-webworker.js"
+                opacity: 0.8
+                //projection: wgs84
+                //useCanvas: OpenLayers.Layer.Grid.ONECANVASPERTILE,
+                //proj4JSPath: "/vendor/proj4js/lib/proj4js=combined.js",
+                //gdalwarpWebWorkerPath: "/vendor/gdalwarp-webworker.js"
             },
             layerParams: {
                 'TRANSPARENT': 'TRUE',
@@ -110,7 +111,7 @@ Ext.onReady(function() {
         // Accepts GeoExt.data.{LayerStore,GroupingStore} or [OpenLayers.Layer]
         layers: [
           //layers.blueMarble
-          //layers.OSM
+          layers.OSM
           //layers.EDAC_BASE
         ] ,
         region: 'center',
@@ -118,7 +119,7 @@ Ext.onReady(function() {
           // Borks on them
           projection: new OpenLayers.Projection("EPSG:900913"),  // Explicit
           displayProjection: wgs84,
-          units: "m",
+          units: "m"
           //maxExtent: bounds,
           //restrictedExtent: bounds,
         }
