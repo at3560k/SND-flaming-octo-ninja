@@ -95,9 +95,10 @@ Ext.onReady(function() {
           style: 'padding:5px'
         },
         bodyStyle: 'padding:5px',
-        width: '350',
+        width: '200',
         autoscroll: true,
-        region: 'south'
+        region: 'south',
+        title: 'Dynamic Legend'
     });
 
     tree = new Ext.tree.TreePanel({
@@ -150,14 +151,17 @@ Ext.onReady(function() {
             layout: "border",
             deferredRender: false,
             items: [mapPanel, tree, {
-                contentEl: "desc",
                 region: "east",
-                bodyStyle: {"padding": "5px"},
                 collapsible: true,
                 collapseMode: "mini",
-                split: true,
                 width: 200,
-                title: "Description"
+                items: [
+                    legendPanel, {
+                    contentEl: "desc",
+                    bodyStyle: {"padding": "5px"},
+                    split: true,
+                    title: "Description"
+                }]
             }]
         }
     });
