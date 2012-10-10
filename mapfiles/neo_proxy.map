@@ -79,7 +79,7 @@ WEB
 	"default_east"					"68:00:00W"
 	"default_west"					"125:00:00W"
 	"wms_srs"					"EPSG:4326 EPSG:26913 EPSG:900913" #defines output projections
-     "ows_enable_request" "*"
+    "ows_enable_request" "*"
 
      END #METADATA
 END  #WEB
@@ -111,12 +111,12 @@ END
 
 LEGEND
   STATUS ON
-  KEYSIZE 18 12
-  LABEL
-    TYPE BITMAP
-    SIZE MEDIUM
-    COLOR 0 0 89
-  END
+  KEYSIZE 200 35
+  #LABEL
+  #  TYPE BITMAP
+  #  SIZE MEDIUM
+  #  COLOR 0 0 89
+  #END
 END
 
 #**************************************************SCALEBAR************************************************************************************
@@ -248,6 +248,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD14A1_M_FIRE"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -255,14 +260,18 @@ LAYER
 	  "wms_abstract" 	"Active Fires (1 month - Terra/MODIS)"
 	  "wms_title" 		"Active Fires (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
-      "wms_legendurl_href"  "http://neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif"
-      "wms_legendurl_width" "200"
-      "wms_legendurl_height" "35"
-
   END   #METADATA
 END
     
@@ -275,6 +284,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD14A1_E_FIRE"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -282,13 +296,18 @@ LAYER
 	  "wms_abstract" 	"Active Fires (8 day - Terra/MODIS)"
 	  "wms_title" 		"Active Fires (8 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
-      "wms_legendurl_href"  "http://neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif"
-      "wms_legendurl_width" "200"
-      "wms_legendurl_height" "35"
   END   #METADATA
 END
     
@@ -301,6 +320,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD14A1_D_FIRE"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -308,14 +332,18 @@ LAYER
 	  "wms_abstract" 	"Active Fires (1 day - Terra/MODIS)"
 	  "wms_title" 		"Active Fires (1 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
-      "wms_legendurl_href"  "http://neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif"
-
-      "wms_legendurl_width" "200"
-      "wms_legendurl_height" "35"
   END   #METADATA
 END
     
@@ -328,6 +356,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_M_AER_OD"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -335,7 +368,15 @@ LAYER
 	  "wms_abstract" 	"Aerosol Optical Thickness (1 month - Terra/MODIS)"
 	  "wms_title" 		"Aerosol Optical Thickness (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -351,6 +392,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_M_AER_OD"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -358,7 +404,15 @@ LAYER
 	  "wms_abstract" 	"Aerosol Optical Thickness (1 month - Aqua/MODIS)"
 	  "wms_title" 		"Aerosol Optical Thickness (1 month - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -374,6 +428,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_E_AER_OD"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -381,7 +440,15 @@ LAYER
 	  "wms_abstract" 	"Aerosol Optical Thickness (8 day - Terra/MODIS)"
 	  "wms_title" 		"Aerosol Optical Thickness (8 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -397,6 +464,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_E_AER_OD"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -404,7 +476,15 @@ LAYER
 	  "wms_abstract" 	"Aerosol Optical Thickness (8 day - Aqua/MODIS)"
 	  "wms_title" 		"Aerosol Optical Thickness (8 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -420,6 +500,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_D_AER_OD"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -427,7 +512,15 @@ LAYER
 	  "wms_abstract" 	"Aerosol Optical Thickness (1 day - Terra/MODIS)"
 	  "wms_title" 		"Aerosol Optical Thickness (1 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -443,6 +536,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_D_AER_OD"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -450,7 +548,15 @@ LAYER
 	  "wms_abstract" 	"Aerosol Optical Thickness (1 day - Aqua/MODIS)"
 	  "wms_title" 		"Aerosol Optical Thickness (1 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_od.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -466,6 +572,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_M_AER_RA"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -473,7 +584,15 @@ LAYER
 	  "wms_abstract" 	"Aerosol Particle Radius (1 month - Terra/MODIS)"
 	  "wms_title" 		"Aerosol Particle Radius (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -489,6 +608,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_M_AER_RA"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -496,7 +620,15 @@ LAYER
 	  "wms_abstract" 	"Aerosol Particle Radius (1 month - Aqua/MODIS)"
 	  "wms_title" 		"Aerosol Particle Radius (1 month - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -512,6 +644,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_E_AER_RA"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -519,7 +656,15 @@ LAYER
 	  "wms_abstract" 	"Aerosol Particle Radius (8 day - Terra/MODIS)"
 	  "wms_title" 		"Aerosol Particle Radius (8 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -535,6 +680,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_E_AER_RA"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -542,7 +692,15 @@ LAYER
 	  "wms_abstract" 	"Aerosol Particle Radius (8 day - Aqua/MODIS)"
 	  "wms_title" 		"Aerosol Particle Radius (8 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -558,6 +716,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_D_AER_RA"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -565,7 +728,15 @@ LAYER
 	  "wms_abstract" 	"Aerosol Particle Radius (1 day - Terra/MODIS)"
 	  "wms_title" 		"Aerosol Particle Radius (1 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -581,6 +752,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_D_AER_RA"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -588,7 +764,15 @@ LAYER
 	  "wms_abstract" 	"Aerosol Particle Radius (1 day - Aqua/MODIS)"
 	  "wms_title" 		"Aerosol Particle Radius (1 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_aer_ra.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -604,6 +788,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_bs_albedo.png" 
+  END
+
   METADATA
 	  "wms_name"		"MCD43C3_M_BSA"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -611,7 +800,15 @@ LAYER
 	  "wms_abstract" 	"Albedo (1 month)"
 	  "wms_title" 		"Albedo (1 month)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_bs_albedo.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_bs_albedo.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -627,6 +824,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_bs_albedo.png" 
+  END
+
   METADATA
 	  "wms_name"		"MCD43C3_E_BSA"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -634,7 +836,15 @@ LAYER
 	  "wms_abstract" 	"Albedo (16 day)"
 	  "wms_title" 		"Albedo (16 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_bs_albedo.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_bs_albedo.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -650,6 +860,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD_LSTD_CLIM_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -657,7 +872,15 @@ LAYER
 	  "wms_abstract" 	"Average Land Surface Temperature [Day] (1 month)"
 	  "wms_title" 		"Average Land Surface Temperature [Day] (1 month)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -673,6 +896,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD_LSTD_CLIM_E"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -680,7 +908,15 @@ LAYER
 	  "wms_abstract" 	"Average Land Surface Temperature [Day] (8 day)"
 	  "wms_title" 		"Average Land Surface Temperature [Day] (8 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -696,6 +932,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD_LSTN_CLIM_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -703,7 +944,15 @@ LAYER
 	  "wms_abstract" 	"Average Land Surface Temperature [Night] (1 month)"
 	  "wms_title" 		"Average Land Surface Temperature [Night] (1 month)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -719,6 +968,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD_LSTN_CLIM_E"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -726,7 +980,15 @@ LAYER
 	  "wms_abstract" 	"Average Land Surface Temperature [Night] (8 day)"
 	  "wms_title" 		"Average Land Surface Temperature [Night] (8 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -742,6 +1004,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png" 
+  END
+
   METADATA
 	  "wms_name"		"AVHRR_CLIM_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -749,7 +1016,15 @@ LAYER
 	  "wms_abstract" 	"Average Sea Surface Temperature 1985-1997 (1 month - AVHRR)"
 	  "wms_title" 		"Average Sea Surface Temperature 1985-1997 (1 month - AVHRR)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -765,6 +1040,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png" 
+  END
+
   METADATA
 	  "wms_name"		"AVHRR_CLIM_W"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -772,7 +1052,15 @@ LAYER
 	  "wms_abstract" 	"Average Sea Surface Temperature 1985-1997 (8 day - AVHRR)"
 	  "wms_title" 		"Average Sea Surface Temperature 1985-1997 (8 day - AVHRR)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -788,6 +1076,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+    #NO LEGEND FOUND IN GetCapabilities
+  END
+
   METADATA
 	  "wms_name"		"BlueMarbleNG"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -795,7 +1088,7 @@ LAYER
 	  "wms_abstract" 	"Blue Marble: Next Generation (Terra/MODIS)"
 	  "wms_title" 		"Blue Marble: Next Generation (Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
-
+          #NO LEGEND FOUND IN GetCapabilities
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -811,6 +1104,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+    #NO LEGEND FOUND IN GetCapabilities
+  END
+
   METADATA
 	  "wms_name"		"BlueMarbleNG-TB"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -818,7 +1116,7 @@ LAYER
 	  "wms_abstract" 	"Blue Marble: Next Generation +Topo+Bathy (Terra/MODIS)"
 	  "wms_title" 		"Blue Marble: Next Generation +Topo+Bathy (Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
-
+          #NO LEGEND FOUND IN GetCapabilities
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -834,6 +1132,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/mopitt_co.png" 
+  END
+
   METADATA
 	  "wms_name"		"MOP_CO_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -841,7 +1144,15 @@ LAYER
 	  "wms_abstract" 	"Carbon Monoxide (1 month - Terra/MOPITT)"
 	  "wms_title" 		"Carbon Monoxide (1 month - Terra/MOPITT)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/mopitt_co.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/mopitt_co.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -857,6 +1168,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_chlor.png" 
+  END
+
   METADATA
 	  "wms_name"		"MY1DMM_CHLORA"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -864,7 +1180,15 @@ LAYER
 	  "wms_abstract" 	"Chlorophyll Concentration (1 month - Aqua/MODIS)"
 	  "wms_title" 		"Chlorophyll Concentration (1 month - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_chlor.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_chlor.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -880,6 +1204,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_chlor.png" 
+  END
+
   METADATA
 	  "wms_name"		"MY1DMW_CHLORA"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -887,7 +1216,15 @@ LAYER
 	  "wms_abstract" 	"Chlorophyll Concentration (8 day - Aqua/MODIS)"
 	  "wms_title" 		"Chlorophyll Concentration (8 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_chlor.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_chlor.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -903,6 +1240,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_chlor.png" 
+  END
+
   METADATA
 	  "wms_name"		"MY1DMD_CHLORA"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -910,7 +1252,15 @@ LAYER
 	  "wms_abstract" 	"Chlorophyll Concentration (1 day - Aqua/MODIS)"
 	  "wms_title" 		"Chlorophyll Concentration (1 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_chlor.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_chlor.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -926,6 +1276,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_M_CLD_CI"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -933,7 +1288,15 @@ LAYER
 	  "wms_abstract" 	"Cirrus Reflectance (1 month - Terra/MODIS)"
 	  "wms_title" 		"Cirrus Reflectance (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -949,6 +1312,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_M_CLD_CI"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -956,7 +1324,15 @@ LAYER
 	  "wms_abstract" 	"Cirrus Reflectance (1 month - Aqua/MODIS)"
 	  "wms_title" 		"Cirrus Reflectance (1 month - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -972,6 +1348,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_E_CLD_CI"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -979,7 +1360,15 @@ LAYER
 	  "wms_abstract" 	"Cirrus Reflectance (8 day - Terra/MODIS)"
 	  "wms_title" 		"Cirrus Reflectance (8 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -995,6 +1384,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_E_CLD_CI"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1002,7 +1396,15 @@ LAYER
 	  "wms_abstract" 	"Cirrus Reflectance (8 day - Aqua/MODIS)"
 	  "wms_title" 		"Cirrus Reflectance (8 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1018,6 +1420,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_D_CLD_CI"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1025,7 +1432,15 @@ LAYER
 	  "wms_abstract" 	"Cirrus Reflectance (1 day - Terra/MODIS)"
 	  "wms_title" 		"Cirrus Reflectance (1 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1041,6 +1456,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_D_CLD_CI"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1048,7 +1468,15 @@ LAYER
 	  "wms_abstract" 	"Cirrus Reflectance (1 day - Aqua/MODIS)"
 	  "wms_title" 		"Cirrus Reflectance (1 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ci.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1064,6 +1492,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_M_CLD_FR"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1071,7 +1504,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Fraction (1 month - Terra/MODIS)"
 	  "wms_title" 		"Cloud Fraction (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1087,6 +1528,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_M_CLD_FR"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1094,7 +1540,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Fraction (1 month - Aqua/MODIS)"
 	  "wms_title" 		"Cloud Fraction (1 month - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1110,6 +1564,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_E_CLD_FR"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1117,7 +1576,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Fraction (8 day - Terra/MODIS)"
 	  "wms_title" 		"Cloud Fraction (8 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1133,6 +1600,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_E_CLD_FR"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1140,7 +1612,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Fraction (8 day - Aqua/MODIS)"
 	  "wms_title" 		"Cloud Fraction (8 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1156,6 +1636,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_D_CLD_FR"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1163,7 +1648,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Fraction (1 day - Terra/MODIS)"
 	  "wms_title" 		"Cloud Fraction (1 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1179,6 +1672,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_D_CLD_FR"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1186,7 +1684,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Fraction (1 day - Aqua/MODIS)"
 	  "wms_title" 		"Cloud Fraction (1 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_fr.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1202,6 +1708,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_M_CLD_OT"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1209,7 +1720,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Optical Thickness (1 month - Terra/MODIS)"
 	  "wms_title" 		"Cloud Optical Thickness (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1225,6 +1744,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_M_CLD_OT"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1232,7 +1756,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Optical Thickness (1 month - Aqua/MODIS)"
 	  "wms_title" 		"Cloud Optical Thickness (1 month - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1248,6 +1780,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_E_CLD_OT"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1255,7 +1792,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Optical Thickness (8 day - Terra/MODIS)"
 	  "wms_title" 		"Cloud Optical Thickness (8 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1271,6 +1816,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_E_CLD_OT"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1278,7 +1828,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Optical Thickness (8 day - Aqua/MODIS)"
 	  "wms_title" 		"Cloud Optical Thickness (8 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1294,6 +1852,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_D_CLD_OT"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1301,7 +1864,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Optical Thickness (1 day - Terra/MODIS)"
 	  "wms_title" 		"Cloud Optical Thickness (1 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1317,6 +1888,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_D_CLD_OT"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1324,7 +1900,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Optical Thickness (1 day - Aqua/MODIS)"
 	  "wms_title" 		"Cloud Optical Thickness (1 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_ot.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1340,6 +1924,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_M_CLD_RD"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1347,7 +1936,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Particle Radius (1 month - Terra/MODIS)"
 	  "wms_title" 		"Cloud Particle Radius (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1363,6 +1960,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_M_CLD_RD"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1370,7 +1972,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Particle Radius (1 month - Aqua/MODIS)"
 	  "wms_title" 		"Cloud Particle Radius (1 month - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1386,6 +1996,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_E_CLD_RD"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1393,7 +2008,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Particle Radius (8 day - Terra/MODIS)"
 	  "wms_title" 		"Cloud Particle Radius (8 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1409,6 +2032,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_E_CLD_RD"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1416,7 +2044,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Particle Radius (8 day - Aqua/MODIS)"
 	  "wms_title" 		"Cloud Particle Radius (8 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1432,6 +2068,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_D_CLD_RD"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1439,7 +2080,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Particle Radius (1 day - Terra/MODIS)"
 	  "wms_title" 		"Cloud Particle Radius (1 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1455,6 +2104,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_D_CLD_RD"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1462,7 +2116,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Particle Radius (1 day - Aqua/MODIS)"
 	  "wms_title" 		"Cloud Particle Radius (1 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_rd.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1478,6 +2140,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_M_CLD_WP"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1485,7 +2152,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Water Content (1 month - Terra/MODIS)"
 	  "wms_title" 		"Cloud Water Content (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1501,6 +2176,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_M_CLD_WP"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1508,7 +2188,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Water Content (1 month - Aqua/MODIS)"
 	  "wms_title" 		"Cloud Water Content (1 month - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1524,6 +2212,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_E_CLD_WP"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1531,7 +2224,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Water Content (8 day - Terra/MODIS)"
 	  "wms_title" 		"Cloud Water Content (8 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1547,6 +2248,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_E_CLD_WP"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1554,7 +2260,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Water Content (8 day - Aqua/MODIS)"
 	  "wms_title" 		"Cloud Water Content (8 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1570,6 +2284,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_D_CLD_WP"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1577,7 +2296,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Water Content (1 day - Terra/MODIS)"
 	  "wms_title" 		"Cloud Water Content (1 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1593,6 +2320,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_D_CLD_WP"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1600,7 +2332,15 @@ LAYER
 	  "wms_abstract" 	"Cloud Water Content (1 day - Aqua/MODIS)"
 	  "wms_title" 		"Cloud Water Content (1 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_cld_wp.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1616,6 +2356,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+    #NO LEGEND FOUND IN GetCapabilities
+  END
+
   METADATA
 	  "wms_name"		"MOD_721D_RR"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1623,7 +2368,7 @@ LAYER
 	  "wms_abstract" 	"False Color (1 day - Terra/MODIS Rapid Response)"
 	  "wms_title" 		"False Color (1 day - Terra/MODIS Rapid Response)"
 	  "wms_format"		"image/jpeg"
-
+          #NO LEGEND FOUND IN GetCapabilities
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1639,6 +2384,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+    #NO LEGEND FOUND IN GetCapabilities
+  END
+
   METADATA
 	  "wms_name"		"MYD_721D_RR"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1646,7 +2396,7 @@ LAYER
 	  "wms_abstract" 	"False Color (1 day - Aqua/MODIS Rapid Response)"
 	  "wms_title" 		"False Color (1 day - Aqua/MODIS Rapid Response)"
 	  "wms_format"		"image/jpeg"
-
+          #NO LEGEND FOUND IN GetCapabilities
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1662,6 +2412,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/gebco_bathymetry.gif" 
+  END
+
   METADATA
 	  "wms_name"		"GEBCO_BATHY"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1669,7 +2424,15 @@ LAYER
 	  "wms_abstract" 	"Global Bathymetry (GEBCO)"
 	  "wms_title" 		"Global Bathymetry (GEBCO)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/gebco_bathymetry.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/gebco_bathymetry.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1685,6 +2448,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/giss_tanom_y.png" 
+  END
+
   METADATA
 	  "wms_name"		"GISS_TA_Y"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1692,7 +2460,15 @@ LAYER
 	  "wms_abstract" 	"Global Temperature Anomaly (1 year)"
 	  "wms_title" 		"Global Temperature Anomaly (1 year)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/giss_tanom_y.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/giss_tanom_y.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1708,6 +2484,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/giss_tanom_m.png" 
+  END
+
   METADATA
 	  "wms_name"		"GISS_TA_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1715,7 +2496,15 @@ LAYER
 	  "wms_abstract" 	"Global Temperature Anomaly (1 month)"
 	  "wms_title" 		"Global Temperature Anomaly (1 month)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/giss_tanom_m.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/giss_tanom_m.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1731,6 +2520,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/srtm_topography.gif" 
+  END
+
   METADATA
 	  "wms_name"		"SRTM_RAMP2_TOPO"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1738,7 +2532,15 @@ LAYER
 	  "wms_abstract" 	"Global Topography (SRTM/RAMP2)"
 	  "wms_title" 		"Global Topography (SRTM/RAMP2)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/srtm_topography.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/srtm_topography.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1754,6 +2556,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/icesat_elevation.gif" 
+  END
+
   METADATA
 	  "wms_name"		"ICESAT_ELEV_G"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1761,7 +2568,15 @@ LAYER
 	  "wms_abstract" 	"Greenland / Antarctica Elevation (ICESat/GLAS) [Global]"
 	  "wms_title" 		"Greenland / Antarctica Elevation (ICESat/GLAS) [Global]"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/icesat_elevation.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/icesat_elevation.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1777,6 +2592,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+    #NO LEGEND FOUND IN GetCapabilities
+  END
+
   METADATA
 	  "wms_name"		"MOD12Q1_T1"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1784,7 +2604,7 @@ LAYER
 	  "wms_abstract" 	"Land Cover Classification (1 year - Terra/MODIS)"
 	  "wms_title" 		"Land Cover Classification (1 year - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
-
+          #NO LEGEND FOUND IN GetCapabilities
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1800,6 +2620,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png" 
+  END
+
   METADATA
 	  "wms_name"		"MOD_LSTAD_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1807,7 +2632,15 @@ LAYER
 	  "wms_abstract" 	"Land Surface Temperature Anomaly [Day] (1 month)"
 	  "wms_title" 		"Land Surface Temperature Anomaly [Day] (1 month)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1823,6 +2656,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png" 
+  END
+
   METADATA
 	  "wms_name"		"MOD_LSTAD_E"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1830,7 +2668,15 @@ LAYER
 	  "wms_abstract" 	"Land Surface Temperature Anomaly [Day] (8 day)"
 	  "wms_title" 		"Land Surface Temperature Anomaly [Day] (8 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1846,6 +2692,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png" 
+  END
+
   METADATA
 	  "wms_name"		"MOD_LSTAD_D"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1853,7 +2704,15 @@ LAYER
 	  "wms_abstract" 	"Land Surface Temperature Anomaly [Day] (1 day)"
 	  "wms_title" 		"Land Surface Temperature Anomaly [Day] (1 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1869,6 +2728,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png" 
+  END
+
   METADATA
 	  "wms_name"		"MOD_LSTAN_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1876,7 +2740,15 @@ LAYER
 	  "wms_abstract" 	"Land Surface Temperature Anomaly [Night] (1 month)"
 	  "wms_title" 		"Land Surface Temperature Anomaly [Night] (1 month)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1892,6 +2764,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png" 
+  END
+
   METADATA
 	  "wms_name"		"MOD_LSTAN_E"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1899,7 +2776,15 @@ LAYER
 	  "wms_abstract" 	"Land Surface Temperature Anomaly [Night] (8 day)"
 	  "wms_title" 		"Land Surface Temperature Anomaly [Night] (8 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1915,6 +2800,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png" 
+  END
+
   METADATA
 	  "wms_name"		"MOD_LSTAN_D"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1922,7 +2812,15 @@ LAYER
 	  "wms_abstract" 	"Land Surface Temperature Anomaly [Night] (1 day)"
 	  "wms_title" 		"Land Surface Temperature Anomaly [Night] (1 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst_anom.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1938,6 +2836,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD11C1_M_LSTDA"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1945,7 +2848,15 @@ LAYER
 	  "wms_abstract" 	"Land Surface Temperature [Day] (1 month - Terra/MODIS)"
 	  "wms_title" 		"Land Surface Temperature [Day] (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1961,6 +2872,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD11C1_E_LSTDA"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1968,7 +2884,15 @@ LAYER
 	  "wms_abstract" 	"Land Surface Temperature [Day] (8 day - Terra/MODIS)"
 	  "wms_title" 		"Land Surface Temperature [Day] (8 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -1984,6 +2908,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD11C1_D_LSTDA"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -1991,7 +2920,15 @@ LAYER
 	  "wms_abstract" 	"Land Surface Temperature [Day] (1 day - Terra/MODIS)"
 	  "wms_title" 		"Land Surface Temperature [Day] (1 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2007,6 +2944,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD11C1_M_LSTNI"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2014,7 +2956,15 @@ LAYER
 	  "wms_abstract" 	"Land Surface Temperature [Night] (1 month - Terra/MODIS)"
 	  "wms_title" 		"Land Surface Temperature [Night] (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2030,6 +2980,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD11C1_E_LSTNI"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2037,7 +2992,15 @@ LAYER
 	  "wms_abstract" 	"Land Surface Temperature [Night] (8 day - Terra/MODIS)"
 	  "wms_title" 		"Land Surface Temperature [Night] (8 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2053,6 +3016,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD11C1_D_LSTNI"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2060,7 +3028,15 @@ LAYER
 	  "wms_abstract" 	"Land Surface Temperature [Night] (1 day - Terra/MODIS)"
 	  "wms_title" 		"Land Surface Temperature [Night] (1 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lst.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2076,6 +3052,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lai.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD15A2_M_LAI"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2083,7 +3064,15 @@ LAYER
 	  "wms_abstract" 	"Leaf Area Index (1 month - Terra/MODIS)"
 	  "wms_title" 		"Leaf Area Index (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lai.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lai.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2099,6 +3088,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_lai.gif" 
+  END
+
   METADATA
 	  "wms_name"		"MOD15A2_E_LAI"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2106,7 +3100,15 @@ LAYER
 	  "wms_abstract" 	"Leaf Area Index (8 day - Terra/MODIS)"
 	  "wms_title" 		"Leaf Area Index (8 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lai.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_lai.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2122,6 +3124,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_npp.png" 
+  END
+
   METADATA
 	  "wms_name"		"MOD17A2_M_PSN"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2129,7 +3136,15 @@ LAYER
 	  "wms_abstract" 	"Net Primary Productivity (1 month - Terra/MODIS)"
 	  "wms_title" 		"Net Primary Productivity (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_npp.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_npp.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2145,6 +3160,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_npp.png" 
+  END
+
   METADATA
 	  "wms_name"		"MOD17A2_E_PSN"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2152,7 +3172,15 @@ LAYER
 	  "wms_abstract" 	"Net Primary Productivity (8 day - Terra/MODIS)"
 	  "wms_title" 		"Net Primary Productivity (8 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_npp.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_npp.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2168,6 +3196,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/ceres_net.gif" 
+  END
+
   METADATA
 	  "wms_name"		"CERES_NETFLUX_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2175,7 +3208,15 @@ LAYER
 	  "wms_abstract" 	"Net Radiation (1 month)"
 	  "wms_title" 		"Net Radiation (1 month)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_net.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_net.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2191,6 +3232,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/ceres_net.gif" 
+  END
+
   METADATA
 	  "wms_name"		"CERES_NETFLUX_E"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2198,7 +3244,15 @@ LAYER
 	  "wms_abstract" 	"Net Radiation (8 day)"
 	  "wms_title" 		"Net Radiation (8 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_net.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_net.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2214,6 +3268,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/ceres_net.gif" 
+  END
+
   METADATA
 	  "wms_name"		"CERES_NETFLUX_D"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2221,7 +3280,15 @@ LAYER
 	  "wms_abstract" 	"Net Radiation (1 day)"
 	  "wms_title" 		"Net Radiation (1 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_net.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_net.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2237,6 +3304,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/ceres_lw.gif" 
+  END
+
   METADATA
 	  "wms_name"		"CERES_LWFLUX_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2244,7 +3316,15 @@ LAYER
 	  "wms_abstract" 	"Outgoing Longwave Radiation (1 month)"
 	  "wms_title" 		"Outgoing Longwave Radiation (1 month)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_lw.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_lw.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2260,6 +3340,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/ceres_lw.gif" 
+  END
+
   METADATA
 	  "wms_name"		"CERES_LWFLUX_E"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2267,7 +3352,15 @@ LAYER
 	  "wms_abstract" 	"Outgoing Longwave Radiation (8 day)"
 	  "wms_title" 		"Outgoing Longwave Radiation (8 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_lw.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_lw.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2283,6 +3376,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/ceres_lw.gif" 
+  END
+
   METADATA
 	  "wms_name"		"CERES_LWFLUX_D"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2290,7 +3388,15 @@ LAYER
 	  "wms_abstract" 	"Outgoing Longwave Radiation (1 day)"
 	  "wms_title" 		"Outgoing Longwave Radiation (1 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_lw.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_lw.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2306,6 +3412,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/permafrost_ext.gif" 
+  END
+
   METADATA
 	  "wms_name"		"PermafrostNSIDC"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2313,7 +3424,15 @@ LAYER
 	  "wms_abstract" 	"Permafrost"
 	  "wms_title" 		"Permafrost"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/permafrost_ext.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/permafrost_ext.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2329,6 +3448,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/sedac_pop.gif" 
+  END
+
   METADATA
 	  "wms_name"		"SEDAC_POP"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2336,7 +3460,15 @@ LAYER
 	  "wms_abstract" 	"Population Density"
 	  "wms_title" 		"Population Density"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/sedac_pop.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/sedac_pop.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2352,6 +3484,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/ceres_sw.gif" 
+  END
+
   METADATA
 	  "wms_name"		"CERES_SWFLUX_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2359,7 +3496,15 @@ LAYER
 	  "wms_abstract" 	"Reflected Shortwave Radiation (1 month)"
 	  "wms_title" 		"Reflected Shortwave Radiation (1 month)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_sw.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_sw.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2375,6 +3520,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/ceres_sw.gif" 
+  END
+
   METADATA
 	  "wms_name"		"CERES_SWFLUX_E"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2382,7 +3532,15 @@ LAYER
 	  "wms_abstract" 	"Reflected Shortwave Radiation (8 day)"
 	  "wms_title" 		"Reflected Shortwave Radiation (8 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_sw.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_sw.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2398,6 +3556,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/ceres_sw.gif" 
+  END
+
   METADATA
 	  "wms_name"		"CERES_SWFLUX_D"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2405,7 +3568,15 @@ LAYER
 	  "wms_abstract" 	"Reflected Shortwave Radiation (1 day)"
 	  "wms_title" 		"Reflected Shortwave Radiation (1 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_sw.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_sw.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2421,6 +3592,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png" 
+  END
+
   METADATA
 	  "wms_name"		"AVHRR_SST_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2428,7 +3604,15 @@ LAYER
 	  "wms_abstract" 	"Sea Surface Temperature 1981-2006 (1 month - AVHRR)"
 	  "wms_title" 		"Sea Surface Temperature 1981-2006 (1 month - AVHRR)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2444,6 +3628,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png" 
+  END
+
   METADATA
 	  "wms_name"		"AVHRR_SST_E"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2451,7 +3640,15 @@ LAYER
 	  "wms_abstract" 	"Sea Surface Temperature 1981-2006 (8 day - AVHRR)"
 	  "wms_title" 		"Sea Surface Temperature 1981-2006 (8 day - AVHRR)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2467,6 +3664,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_sst_45.png" 
+  END
+
   METADATA
 	  "wms_name"		"MYD28M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2474,7 +3676,15 @@ LAYER
 	  "wms_abstract" 	"Sea Surface Temperature (1 month - Aqua/MODIS)"
 	  "wms_title" 		"Sea Surface Temperature (1 month - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sst_45.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sst_45.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2490,6 +3700,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_sst_45.png" 
+  END
+
   METADATA
 	  "wms_name"		"MYD28W"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2497,7 +3712,15 @@ LAYER
 	  "wms_abstract" 	"Sea Surface Temperature (8 day - Aqua/MODIS)"
 	  "wms_title" 		"Sea Surface Temperature (8 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sst_45.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sst_45.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2513,6 +3736,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_sst_45.png" 
+  END
+
   METADATA
 	  "wms_name"		"MYD28D"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2520,7 +3748,15 @@ LAYER
 	  "wms_abstract" 	"Sea Surface Temperature (1 day - Aqua/MODIS)"
 	  "wms_title" 		"Sea Surface Temperature (1 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sst_45.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sst_45.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2536,6 +3772,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png" 
+  END
+
   METADATA
 	  "wms_name"		"AMSRE_SST_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2543,7 +3784,15 @@ LAYER
 	  "wms_abstract" 	"Sea Surface Temperature 2002-2011 (1 month - Aqua/AMSR-E)"
 	  "wms_title" 		"Sea Surface Temperature 2002-2011 (1 month - Aqua/AMSR-E)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2559,6 +3808,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png" 
+  END
+
   METADATA
 	  "wms_name"		"AMSRE_SST_W"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2566,7 +3820,15 @@ LAYER
 	  "wms_abstract" 	"Sea Surface Temperature 2002-2011 (8 day - Aqua/AMSR-E)"
 	  "wms_title" 		"Sea Surface Temperature 2002-2011 (8 day - Aqua/AMSR-E)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2582,6 +3844,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png" 
+  END
+
   METADATA
 	  "wms_name"		"AMSRE_SST_D"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2589,7 +3856,15 @@ LAYER
 	  "wms_abstract" 	"Sea Surface Temperature 2002-2011 (1 day - Aqua/AMSR-E)"
 	  "wms_title" 		"Sea Surface Temperature 2002-2011 (1 day - Aqua/AMSR-E)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/global_sst.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2605,6 +3880,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/amsre_sst_anom.png" 
+  END
+
   METADATA
 	  "wms_name"		"AMSRE_SSTAn_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2612,7 +3892,15 @@ LAYER
 	  "wms_abstract" 	"Sea Surface Temperature Anomaly 2002-2011 (1 month - Aqua/AMSR-E)"
 	  "wms_title" 		"Sea Surface Temperature Anomaly 2002-2011 (1 month - Aqua/AMSR-E)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/amsre_sst_anom.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/amsre_sst_anom.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2628,6 +3916,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/amsre_sst_anom.png" 
+  END
+
   METADATA
 	  "wms_name"		"AMSRE_SSTAn_W"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2635,7 +3928,15 @@ LAYER
 	  "wms_abstract" 	"Sea Surface Temperature Anomaly 2002-2011 (8 day - Aqua/AMSR-E)"
 	  "wms_title" 		"Sea Surface Temperature Anomaly 2002-2011 (8 day - Aqua/AMSR-E)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/amsre_sst_anom.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/amsre_sst_anom.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2651,6 +3952,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/amsre_sst_anom.png" 
+  END
+
   METADATA
 	  "wms_name"		"AMSRE_SSTAn_D"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2658,7 +3964,15 @@ LAYER
 	  "wms_abstract" 	"Sea Surface Temperature Anomaly 2002-2011 (1 day - Aqua/AMSR-E)"
 	  "wms_title" 		"Sea Surface Temperature Anomaly 2002-2011 (1 day - Aqua/AMSR-E)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/amsre_sst_anom.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/amsre_sst_anom.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2674,6 +3988,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_snow.png" 
+  END
+
   METADATA
 	  "wms_name"		"MOD10C1_M_SNOW"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2681,7 +4000,15 @@ LAYER
 	  "wms_abstract" 	"Snow Cover (1 month - Terra/MODIS)"
 	  "wms_title" 		"Snow Cover (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_snow.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_snow.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2697,6 +4024,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_snow.png" 
+  END
+
   METADATA
 	  "wms_name"		"MOD10C1_E_SNOW"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2704,7 +4036,15 @@ LAYER
 	  "wms_abstract" 	"Snow Cover (8 day - Terra/MODIS)"
 	  "wms_title" 		"Snow Cover (8 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_snow.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_snow.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2720,6 +4060,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_snow.png" 
+  END
+
   METADATA
 	  "wms_name"		"MOD10C1_D_SNOW"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2727,7 +4072,15 @@ LAYER
 	  "wms_abstract" 	"Snow Cover (1 day - Terra/MODIS)"
 	  "wms_title" 		"Snow Cover (1 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_snow.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_snow.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2743,6 +4096,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+    #NO LEGEND FOUND IN GetCapabilities
+  END
+
   METADATA
 	  "wms_name"		"SCSIE_W"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2750,7 +4108,7 @@ LAYER
 	  "wms_abstract" 	"Northern Hemisphere Snow Cover and Sea Ice Extent (1 week)"
 	  "wms_title" 		"Northern Hemisphere Snow Cover and Sea Ice Extent (1 week)"
 	  "wms_format"		"image/jpeg"
-
+          #NO LEGEND FOUND IN GetCapabilities
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2766,6 +4124,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/nise_d.gif" 
+  END
+
   METADATA
 	  "wms_name"		"NISE_D"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2773,7 +4136,15 @@ LAYER
 	  "wms_abstract" 	"Global Ice Concentration and Snow Extent (1 day - SSM/I / DMSP)"
 	  "wms_title" 		"Global Ice Concentration and Snow Extent (1 day - SSM/I / DMSP)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/nise_d.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/nise_d.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2789,6 +4160,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/swe.gif" 
+  END
+
   METADATA
 	  "wms_name"		"SWE_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2796,7 +4172,15 @@ LAYER
 	  "wms_abstract" 	"Snow Water Equivalent (1 month - Passive Microwave, with optical)"
 	  "wms_title" 		"Snow Water Equivalent (1 month - Passive Microwave, with optical)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/swe.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/swe.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2812,6 +4196,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/ceres_insol.gif" 
+  END
+
   METADATA
 	  "wms_name"		"CERES_INSOL_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2819,7 +4208,15 @@ LAYER
 	  "wms_abstract" 	"Solar Insolation (1 month)"
 	  "wms_title" 		"Solar Insolation (1 month)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_insol.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_insol.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2835,6 +4232,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/ceres_insol.gif" 
+  END
+
   METADATA
 	  "wms_name"		"CERES_INSOL_E"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2842,7 +4244,15 @@ LAYER
 	  "wms_abstract" 	"Solar Insolation (8 day)"
 	  "wms_title" 		"Solar Insolation (8 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_insol.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_insol.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2858,6 +4268,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/ceres_insol.gif" 
+  END
+
   METADATA
 	  "wms_name"		"CERES_INSOL_D"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2865,7 +4280,15 @@ LAYER
 	  "wms_abstract" 	"Solar Insolation (1 day)"
 	  "wms_title" 		"Solar Insolation (1 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_insol.gif"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/ceres_insol.gif"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2881,6 +4304,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/omi_ozone_to3.png" 
+  END
+
   METADATA
 	  "wms_name"		"AURA_OZONE_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2888,7 +4316,15 @@ LAYER
 	  "wms_abstract" 	"Total Column Ozone (1 month)"
 	  "wms_title" 		"Total Column Ozone (1 month)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/omi_ozone_to3.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/omi_ozone_to3.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2904,6 +4340,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/omi_ozone_to3.png" 
+  END
+
   METADATA
 	  "wms_name"		"AURA_OZONE_E"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2911,7 +4352,15 @@ LAYER
 	  "wms_abstract" 	"Total Column Ozone (8 day)"
 	  "wms_title" 		"Total Column Ozone (8 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/omi_ozone_to3.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/omi_ozone_to3.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2927,6 +4376,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/omi_ozone_to3.png" 
+  END
+
   METADATA
 	  "wms_name"		"AURA_OZONE_D"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2934,7 +4388,15 @@ LAYER
 	  "wms_abstract" 	"Total Column Ozone (1 day)"
 	  "wms_title" 		"Total Column Ozone (1 day)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/omi_ozone_to3.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/omi_ozone_to3.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2950,6 +4412,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/trmm_rainfall_m.png" 
+  END
+
   METADATA
 	  "wms_name"		"TRMM_3B43M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2957,7 +4424,15 @@ LAYER
 	  "wms_abstract" 	"Total Rainfall (1 month - TRMM)"
 	  "wms_title" 		"Total Rainfall (1 month - TRMM)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/trmm_rainfall_m.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/trmm_rainfall_m.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2973,6 +4448,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/trmm_rainfall_d.png" 
+  END
+
   METADATA
 	  "wms_name"		"TRMM_3B43D"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -2980,7 +4460,15 @@ LAYER
 	  "wms_abstract" 	"Total Rainfall (1 day - TRMM)"
 	  "wms_title" 		"Total Rainfall (1 day - TRMM)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/trmm_rainfall_d.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/trmm_rainfall_d.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -2996,6 +4484,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+    #NO LEGEND FOUND IN GetCapabilities
+  END
+
   METADATA
 	  "wms_name"		"MOD_143D_RR"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -3003,7 +4496,7 @@ LAYER
 	  "wms_abstract" 	"True Color (1 day - Terra/MODIS Rapid Response)"
 	  "wms_title" 		"True Color (1 day - Terra/MODIS Rapid Response)"
 	  "wms_format"		"image/jpeg"
-
+          #NO LEGEND FOUND IN GetCapabilities
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -3019,6 +4512,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+    #NO LEGEND FOUND IN GetCapabilities
+  END
+
   METADATA
 	  "wms_name"		"MYD_143D_RR"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -3026,7 +4524,7 @@ LAYER
 	  "wms_abstract" 	"True Color (1 day - Aqua/MODIS Rapid Response)"
 	  "wms_title" 		"True Color (1 day - Aqua/MODIS Rapid Response)"
 	  "wms_format"		"image/jpeg"
-
+          #NO LEGEND FOUND IN GetCapabilities
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -3042,6 +4540,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_ndvi.png" 
+  END
+
   METADATA
 	  "wms_name"		"MOD13A2_M_NDVI"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -3049,13 +4552,18 @@ LAYER
 	  "wms_abstract" 	"Vegetation Index [NDVI] (1 month - Terra/MODIS)"
 	  "wms_title" 		"Vegetation Index [NDVI] (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_ndvi.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_ndvi.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
-      "wms_legendurl_href"  "http://neo.sci.gsfc.nasa.gov/palettes/files/modis_ndvi.png"
-      "wms_legendurl_width" "200"
-      "wms_legendurl_height" "35"
   END   #METADATA
 END
     
@@ -3068,6 +4576,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_ndvi.png" 
+  END
+
   METADATA
 	  "wms_name"		"MOD13A2_E_NDVI"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -3075,13 +4588,18 @@ LAYER
 	  "wms_abstract" 	"Vegetation Index [NDVI] (16 day - Terra/MODIS)"
 	  "wms_title" 		"Vegetation Index [NDVI] (16 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_ndvi.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_ndvi.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
-      "wms_legendurl_href"  "http://neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif"
-      "wms_legendurl_width" "200"
-      "wms_legendurl_height" "35"
   END   #METADATA
 END
     
@@ -3094,6 +4612,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/grace_lwe_anom.png" 
+  END
+
   METADATA
 	  "wms_name"		"GRACE_LWE_M"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -3101,7 +4624,15 @@ LAYER
 	  "wms_abstract" 	"Water Equivalent Anomaly (1 month)"
 	  "wms_title" 		"Water Equivalent Anomaly (1 month)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/grace_lwe_anom.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/grace_lwe_anom.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -3117,6 +4648,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_M_SKY_WV"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -3124,7 +4660,15 @@ LAYER
 	  "wms_abstract" 	"Water Vapor (1 month - Terra/MODIS)"
 	  "wms_title" 		"Water Vapor (1 month - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -3140,6 +4684,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_M_SKY_WV"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -3147,7 +4696,15 @@ LAYER
 	  "wms_abstract" 	"Water Vapor (1 month - Aqua/MODIS)"
 	  "wms_title" 		"Water Vapor (1 month - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -3163,6 +4720,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_E_SKY_WV"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -3170,7 +4732,15 @@ LAYER
 	  "wms_abstract" 	"Water Vapor (8 day - Terra/MODIS)"
 	  "wms_title" 		"Water Vapor (8 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -3186,6 +4756,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_E_SKY_WV"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -3193,7 +4768,15 @@ LAYER
 	  "wms_abstract" 	"Water Vapor (8 day - Aqua/MODIS)"
 	  "wms_title" 		"Water Vapor (8 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -3209,6 +4792,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png" 
+  END
+
   METADATA
 	  "wms_name"		"MODAL2_D_SKY_WV"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -3216,7 +4804,15 @@ LAYER
 	  "wms_abstract" 	"Water Vapor (1 day - Terra/MODIS)"
 	  "wms_title" 		"Water Vapor (1 day - Terra/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
@@ -3232,6 +4828,11 @@ LAYER
  CONNECTIONTYPE WMS
  STATUS ON
 
+  CLASS
+    NAME "rgb"
+        KEYIMAGE "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png" 
+  END
+
   METADATA
 	  "wms_name"		"MYDAL2_D_SKY_WV"
 	  "wms_server_version" 	"1.1.1"			#request from here to NASA service in version 1.1.1
@@ -3239,7 +4840,15 @@ LAYER
 	  "wms_abstract" 	"Water Vapor (1 day - Aqua/MODIS)"
 	  "wms_title" 		"Water Vapor (1 day - Aqua/MODIS)"
 	  "wms_format"		"image/jpeg"
+          
+          "wms_style_rgb_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png"
+	  "wms_style_rgb_legendurl_width"  "200"
+	  "wms_style_rgb_legendurl_height" "35"
 
+          "wms_legendurl_href" "neo.sci.gsfc.nasa.gov/palettes/files/modis_sky_wv.png"
+	  "wms_legendurl_width"  "200"
+	  "wms_legendurl_height" "35"
+    
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"

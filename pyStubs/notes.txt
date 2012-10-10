@@ -8,3 +8,7 @@ symbology and crashing
 don't forget to add 900913 to the WMS which has a duplicated init ...
 
 edit /etc/hosts and %systemroot%...drivers/etc/hosts for mymapserver.edac.unm.edu
+
+cat data/neo_capabilities_1_1_1.xml | grep -i ".gif" | grep -i xlink | cut -d'=' -f2 | xargs wget
+used to scrape legend images.  Very messy and should be reprocessed
+

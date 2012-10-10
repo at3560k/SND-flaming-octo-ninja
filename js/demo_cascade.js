@@ -95,7 +95,7 @@ Ext.onReady(function() {
           style: 'padding:5px'
         },
         bodyStyle: 'padding:5px',
-        width: '200',
+        width: '250',
         autoscroll: true,
         region: 'south',
         title: 'Dynamic Legend'
@@ -154,7 +154,7 @@ Ext.onReady(function() {
                 region: "east",
                 collapsible: true,
                 collapseMode: "mini",
-                width: 200,
+                width: 250,
                 items: [
                     legendPanel, {
                     contentEl: "desc",
