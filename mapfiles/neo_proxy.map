@@ -259,6 +259,10 @@ LAYER
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
+      "wms_legendurl_href"  "http://neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif"
+      "wms_legendurl_width" "200"
+      "wms_legendurl_height" "35"
+
   END   #METADATA
 END
     
@@ -282,6 +286,9 @@ LAYER
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
+      "wms_legendurl_href"  "http://neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif"
+      "wms_legendurl_width" "200"
+      "wms_legendurl_height" "35"
   END   #METADATA
 END
     
@@ -305,6 +312,10 @@ LAYER
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
+      "wms_legendurl_href"  "http://neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif"
+
+      "wms_legendurl_width" "200"
+      "wms_legendurl_height" "35"
   END   #METADATA
 END
     
@@ -3042,6 +3053,9 @@ LAYER
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
+      "wms_legendurl_href"  "http://neo.sci.gsfc.nasa.gov/palettes/files/modis_ndvi.png"
+      "wms_legendurl_width" "200"
+      "wms_legendurl_height" "35"
   END   #METADATA
 END
     
@@ -3065,6 +3079,9 @@ LAYER
 	  "wms_connectiontimeout" "60"
 	  "wms_latlonboundingbox" "-180 -90 180 90"
 	  "wms_transparent" 	"TRUE"
+      "wms_legendurl_href"  "http://neo.sci.gsfc.nasa.gov/palettes/files/modis_fire_l3.gif"
+      "wms_legendurl_width" "200"
+      "wms_legendurl_height" "35"
   END   #METADATA
 END
     
