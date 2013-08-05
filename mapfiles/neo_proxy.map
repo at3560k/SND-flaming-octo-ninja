@@ -146,24 +146,24 @@ END   #SCALEBAR
 
 #***************************************OUTPUTFORMAT*************************************************
 
-OUTPUTFORMAT
-    NAME "png"
-    MIMETYPE "image/png"
-    DRIVER "GD/PNG"
-    EXTENSION "png"
-    IMAGEMODE "RGBA"
-    TRANSPARENT TRUE
-    FORMATOPTION "INTERLACE=OFF"
-    FORMATOPTION "TRANSPARENT=ON"
-END
+#OUTPUTFORMAT
+#    NAME "png"
+#    MIMETYPE "image/png"
+#    DRIVER "GD/PNG"
+#    EXTENSION "png"
+#    IMAGEMODE "RGBA"
+#    TRANSPARENT TRUE
+#    FORMATOPTION "INTERLACE=OFF"
+#    FORMATOPTION "TRANSPARENT=ON"
+#END
 
-OUTPUTFORMAT
-    NAME "GEOTIFF"
-    DRIVER "GDAL/GTiff"
-    MIMETYPE "image/tiff"
-    IMAGEMODE "BYTE"
-    EXTENSION "tif"
-END #OUTPUTFORMAT
+#OUTPUTFORMAT
+#    NAME "GEOTIFF"
+#    DRIVER "GDAL/GTiff"
+#    MIMETYPE "image/tiff"
+#    IMAGEMODE "BYTE"
+#    EXTENSION "tif"
+#END #OUTPUTFORMAT
 
 #OUTPUTFORMAT
 #	NAME "jpeg"
